@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>How we do competitor research with Claude · Social Media · Porter Metrics</title>
+<link rel="stylesheet" href="../_shared/styles.css">
+</head>
+<body>
+<div class="label" id="layoutLabel"></div>
+<div class="stage">
+
+  <!-- SECTION COVER -->
+  <section class="slide active pad divider" data-layout="Social Media">
+    <div class="kicker" style="color:var(--orange)">06 · Tactics</div>
+    <h2>Social Media</h2>
+    <p class="lead" style="margin-top:14px;max-width:62ch">What a competitor posts — and how their audience reacts. Read live from <b style="color:var(--text)">public Instagram data</b> via Porter, using <b style="color:var(--text)">adidas</b> as our worked example.</p>
+  </section>
+
+  <!-- 1 · THE PROFILE (rebuilt from real public data) -->
+  <section class="slide pad" data-layout="The profile we analyze" style="justify-content:center">
+    <style>
+      .ig-sub{font-size:17px;color:var(--text-soft);text-align:center;max-width:70ch;margin:12px auto 0;line-height:1.5}
+      .ig-sub b{color:var(--text)}
+      .ig-card{width:840px;max-width:100%;margin:34px auto 0;background:var(--bg-elev);border:1px solid rgba(255,255,255,.09);border-radius:18px;padding:32px 40px;display:flex;gap:40px;align-items:center;box-shadow:0 26px 60px -30px rgba(0,0,0,.8)}
+      .ig-ring{width:132px;height:132px;flex:none;border-radius:50%;padding:4px;background:conic-gradient(from 220deg,#feda75,#fa7e1e,#d62976,#962fbf,#4f5bd5,#feda75)}
+      .ig-av{width:100%;height:100%;border-radius:50%;background:#1c1c1c;display:grid;place-items:center}
+      .ig-av svg{width:48px;height:48px;stroke:var(--text-dim);fill:none;stroke-width:1.6}
+      .ig-info{flex:1;min-width:0}
+      .ig-name{display:flex;align-items:center;gap:10px}
+      .ig-name h3{font-size:26px;color:var(--text);font-weight:750}
+      .ig-check{width:22px;height:22px;border-radius:50%;background:#3897f0;display:grid;place-items:center;color:#fff;font-size:12px;font-weight:900}
+      .ig-stats{display:flex;gap:34px;margin:16px 0 14px}
+      .ig-stat .v{font-size:22px;color:var(--text);font-weight:750}
+      .ig-stat .l{font-size:13px;color:var(--text-dim)}
+      .ig-bio{font-size:15px;color:var(--text-soft);line-height:1.5}
+      .ig-bio .tag{color:var(--orange);font-weight:650}
+      .ig-web{font-size:14px;color:var(--blue,#6aa8ff);margin-top:5px}
+      .ig-note{text-align:center;color:var(--text-dim);font-size:13px;margin-top:22px}
+    </style>
+    <div class="kicker" style="color:var(--orange);text-align:center">06 · Social · the account we analyze</div>
+    <h2 style="margin-top:8px;text-align:center">Start with the public profile</h2>
+    <p class="ig-sub">No login, no scraping tricks — just a <b>public business account</b>, read through Porter's Instagram public data.</p>
+    <div class="ig-card">
+      <div class="ig-ring"><div class="ig-av"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1.2" fill="currentColor" stroke="none"/></svg></div></div>
+      <div class="ig-info">
+        <div class="ig-name"><h3>@adidas</h3><span class="ig-check">✓</span></div>
+        <div class="ig-stats">
+          <div class="ig-stat"><div class="v">1,637</div><div class="l">posts</div></div>
+          <div class="ig-stat"><div class="v">29.6M</div><div class="l">followers</div></div>
+          <div class="ig-stat"><div class="v">1,060</div><div class="l">following</div></div>
+        </div>
+        <div class="ig-bio">Where there's a pitch, there's a legend. <span class="tag">#YouGotThis</span></div>
+        <div class="ig-web">linktr.ee/adidas</div>
+      </div>
+    </div>
+    <p class="ig-note">Rebuilt from the real public figures Porter returns — captured Aug 2026.</p>
+    <div class="foot"><span><span class="spark">✻</span> How we do competitor research with Claude</span><span>x</span></div>
+  </section>
+
+  <!-- 2 · THE PROCESS · handle -> read -> items -->
+  <section class="slide pad" data-layout="Handle → read → the items" style="justify-content:center">
+    <style>
+      .pf-sub{font-size:17px;color:var(--text-soft);text-align:center;max-width:72ch;margin:12px auto 0;line-height:1.5}
+      .pf-sub b{color:var(--text)}
+      .pf-flow{display:flex;align-items:center;justify-content:center;margin-top:46px}
+      .pf-node{display:flex;flex-direction:column;align-items:center;gap:14px;width:236px}
+      .pf-card{width:216px;height:154px;border-radius:15px;background:var(--bg-elev);border:1px solid rgba(255,255,255,.08);box-shadow:0 22px 46px -24px rgba(0,0,0,.75);overflow:hidden;display:flex;flex-direction:column}
+      .pf-bar{height:31px;background:var(--code-bg);display:flex;align-items:center;gap:6px;padding:0 11px}
+      .pf-bar .d{width:8px;height:8px;border-radius:50%}
+      .pf-url{margin-left:6px;font-family:var(--mono);font-size:10.5px;color:var(--text-soft);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+      .pf-body{flex:1;padding:12px 14px;display:flex;flex-direction:column;gap:8px;justify-content:center}
+      .pf-r{display:flex;justify-content:space-between;align-items:center}
+      .pf-r .l{height:7px;border-radius:4px;background:rgba(255,255,255,.10)}
+      .pf-r .p{font-family:var(--mono);font-size:10.5px;color:var(--text-dim)}
+      .pf-claude{width:150px;height:150px;border-radius:24px;background:#fff;display:grid;place-items:center;box-shadow:0 22px 52px -20px rgba(217,119,87,.5);animation:pfpulse 2.6s ease-in-out infinite}
+      .pf-claude img{width:80px;height:80px}
+      @keyframes pfpulse{0%,100%{box-shadow:0 22px 52px -24px rgba(217,119,87,.32)}50%{box-shadow:0 22px 64px -14px rgba(217,119,87,.7)}}
+      .pf-out{width:216px;height:154px;border-radius:15px;background:linear-gradient(158deg,#2b211c,#232323);border:1px solid rgba(217,119,87,.24);padding:13px 16px;display:flex;flex-direction:column;gap:6px;justify-content:center}
+      .pf-out .o{display:flex;align-items:center;gap:9px;font-size:12px;color:var(--text-soft);font-weight:600}
+      .pf-out .o .n{font-family:var(--mono);font-size:9.5px;color:var(--orange);font-weight:700;width:14px}
+      .pf-label{font-size:13.5px;color:var(--text-dim);font-weight:600}
+      .pf-conn{width:92px;height:2px;background:rgba(255,255,255,.13);position:relative;margin:0 -4px;margin-bottom:32px}
+      .pf-conn::before{content:"";position:absolute;top:-3.5px;left:0;width:9px;height:9px;border-radius:50%;background:var(--orange);box-shadow:0 0 12px 2px rgba(217,119,87,.6);animation:pfrun 2.2s linear infinite}
+      .pf-conn.d2::before{animation-delay:1.1s}
+      @keyframes pfrun{0%{left:0;opacity:0}12%{opacity:1}88%{opacity:1}100%{left:84px;opacity:0}}
+      .pf-step{font-family:var(--mono);font-size:12px;color:var(--orange);font-weight:700;margin-bottom:2px}
+    </style>
+    <div class="kicker" style="color:var(--orange);text-align:center">06 · Social · the process</div>
+    <h2 style="margin-top:8px;text-align:center">Handle → read → the items</h2>
+    <p class="pf-sub">Give Claude a <b>handle</b>. Porter pulls the <b>public data</b> (Business Discovery), and the same items get filled — then it ships as a hosted dashboard.</p>
+    <div class="pf-flow">
+      <div class="pf-node">
+        <div class="pf-step">1 · the handle</div>
+        <div class="pf-card">
+          <div class="pf-bar"><span class="d" style="background:#ff5f57"></span><span class="d" style="background:#febc2e"></span><span class="d" style="background:#28c840"></span><span class="pf-url">instagram.com/adidas</span></div>
+          <div class="pf-body">
+            <div class="pf-r"><span class="l" style="width:50%"></span><span class="p">29.6M</span></div>
+            <div class="pf-r"><span class="l" style="width:40%"></span><span class="p">1,637</span></div>
+            <div class="pf-r"><span class="l" style="width:58%"></span><span class="p">carousel</span></div>
+            <div class="pf-r"><span class="l" style="width:44%"></span><span class="p">reel</span></div>
+          </div>
+        </div>
+        <div class="pf-label">The public account</div>
+      </div>
+      <div class="pf-conn"></div>
+      <div class="pf-node">
+        <div class="pf-step">2 · read</div>
+        <div class="pf-claude"><img src="../_shared/logos/claude-code.svg" alt="Claude"></div>
+        <div class="pf-label">Claude + Porter read it</div>
+      </div>
+      <div class="pf-conn d2"></div>
+      <div class="pf-node">
+        <div class="pf-step">3 · the items</div>
+        <div class="pf-out">
+          <div class="o"><span class="n">01</span> Profile</div>
+          <div class="o"><span class="n">02</span> Format mix</div>
+          <div class="o"><span class="n">03</span> Engagement</div>
+          <div class="o"><span class="n">04</span> Publishing cadence</div>
+          <div class="o"><span class="n">05</span> Creators &amp; collabs</div>
+          <div class="o"><span class="n">06</span> What's visible</div>
+        </div>
+        <div class="pf-label">→ a hosted Porter dashboard</div>
+      </div>
+    </div>
+    <div class="foot"><span><span class="spark">✻</span> How we do competitor research with Claude</span><span>x</span></div>
+  </section>
+
+  <!-- 3 · THE ANALYSIS · the teardown, applied to adidas -->
+  <section class="slide pad" data-layout="adidas, through the framework" style="justify-content:center">
+    <style>
+      .fw-sub{font-size:16px;color:var(--text-soft);text-align:center;max-width:82ch;margin:11px auto 0;line-height:1.5}
+      .fw-sub b{color:var(--text)}
+      .fw-legend{display:flex;gap:20px;justify-content:center;margin:12px auto 0;font-size:12px;color:var(--text-dim)}
+      .fw-legend span{display:inline-flex;align-items:center;gap:7px}
+      .fw-legend i{width:11px;height:11px;border-radius:3px;display:inline-block}
+      .fw-table{width:100%;max-width:1190px;margin:6px auto 0}
+      .fw-row{display:flex;gap:18px;align-items:center;padding:6px 10px;border-top:1px solid rgba(255,255,255,.07)}
+      .fw-row:last-child{border-bottom:1px solid rgba(255,255,255,.07)}
+      .fw-row.star{background:linear-gradient(90deg,rgba(217,119,87,.07),transparent);border-left:2.5px solid var(--orange)}
+      .fw-left{width:214px;flex:none;display:flex;align-items:center;gap:11px}
+      .fw-ic{width:33px;height:33px;flex:none;border-radius:10px;background:rgba(217,119,87,.13);display:grid;place-items:center}
+      .fw-ic svg{width:18px;height:18px;stroke:var(--orange);fill:none;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+      .fw-lt .n{font-family:var(--mono);font-size:10.5px;color:var(--orange);font-weight:700}
+      .fw-lt h3{font-size:14.5px;color:var(--text);font-weight:750;margin:1px 0 1px}
+      .fw-lt p{font-size:11.5px;color:var(--text-dim);margin:0;line-height:1.3}
+      .fw-chips{display:flex;flex-wrap:wrap;gap:8px}
+      .fw-chip{font-family:var(--mono);font-size:12px;color:var(--text-soft);background:var(--bg-elev);border:1px solid rgba(255,255,255,.09);border-radius:7px;padding:5px 10px;white-space:nowrap}
+      .fw-chip b{color:var(--text);font-weight:700}
+      .fw-tag{font-size:9.5px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:var(--text-dim);border:1px solid rgba(255,255,255,.14);border-radius:20px;padding:2px 8px;margin-left:8px}
+      .fw-tag.star{color:var(--orange);border-color:rgba(217,119,87,.45)}
+      .vr-ok{color:#33d17a;font-weight:800}
+      .vr-bad{color:#ff6b6b;font-weight:800}
+      .fw-punch{text-align:center;color:var(--text);font-size:15.5px;margin-top:10px;font-weight:600}
+      .fw-punch b{color:var(--orange)}
+    </style>
+    <div class="kicker" style="color:var(--orange);text-align:center">06 · Social · the analysis</div>
+    <h2 style="margin-top:6px;text-align:center">adidas, through the framework</h2>
+    <p class="fw-sub">Every number measured off <b>public data</b> — 100 posts (50 carry likes), Sep 2025–Jul 2026. The full teardown ships as a hosted Porter dashboard.</p>
+    <div class="fw-legend"><span><i style="background:rgba(217,119,87,.6)"></i>measured from public data</span><span><i style="background:rgba(255,255,255,.18)"></i>the honest boundary</span></div>
+
+    <div class="fw-table">
+
+      <div class="fw-row">
+        <div class="fw-left">
+          <div class="fw-ic"><svg viewBox="0 0 24 24"><circle cx="12" cy="9" r="3.5"/><path d="M5 20c0-3.5 3-6 7-6s7 2.5 7 6"/></svg></div>
+          <div class="fw-lt"><div class="n">01</div><h3>Profile</h3><p>the base</p></div>
+        </div>
+        <div class="fw-chips">
+          <span class="fw-chip"><b>29.6M</b> followers</span><span class="fw-chip">1,637 posts</span><span class="fw-chip">follows 1,060</span><span class="fw-chip">bio · #YouGotThis</span>
+        </div>
+      </div>
+
+      <div class="fw-row">
+        <div class="fw-left">
+          <div class="fw-ic"><svg viewBox="0 0 24 24"><rect x="4" y="4" width="7" height="7" rx="1"/><rect x="13" y="4" width="7" height="7" rx="1"/><rect x="4" y="13" width="7" height="7" rx="1"/><rect x="13" y="13" width="7" height="7" rx="1"/></svg></div>
+          <div class="fw-lt"><div class="n">02</div><h3>Format mix</h3><p>of last 100</p></div>
+        </div>
+        <div class="fw-chips">
+          <span class="fw-chip">Carousel <b>68%</b></span><span class="fw-chip">Reel <b>25%</b></span><span class="fw-chip">Image <b>7%</b></span><span class="fw-chip">→ carousel-first</span>
+        </div>
+      </div>
+
+      <div class="fw-row">
+        <div class="fw-left">
+          <div class="fw-ic"><svg viewBox="0 0 24 24"><path d="M12 20s-7-4.5-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.5-7 10-7 10z"/></svg></div>
+          <div class="fw-lt"><div class="n">03</div><h3>Engagement</h3><p>likes + comments only</p></div>
+        </div>
+        <div class="fw-chips">
+          <span class="fw-chip">median <b>79.8K</b> likes/post</span><span class="fw-chip">mean 320K — 1 post hit <b>4.3M</b></span><span class="fw-chip">conversation 0.55%</span>
+        </div>
+      </div>
+
+      <div class="fw-row">
+        <div class="fw-left">
+          <div class="fw-ic"><svg viewBox="0 0 24 24"><rect x="4" y="5" width="16" height="16" rx="2"/><path d="M4 9.5h16"/><path d="M8 3v4"/><path d="M16 3v4"/></svg></div>
+          <div class="fw-lt"><div class="n">04</div><h3>Publishing</h3><p>cadence &amp; timing</p></div>
+        </div>
+        <div class="fw-chips">
+          <span class="fw-chip">~100 posts · Sep'25–Jul'26</span><span class="fw-chip">clock in UTC</span><span class="fw-chip">heatmap · weekday × hour</span>
+        </div>
+      </div>
+
+      <div class="fw-row">
+        <div class="fw-left">
+          <div class="fw-ic"><svg viewBox="0 0 24 24"><circle cx="9" cy="8" r="3.2"/><path d="M3.5 19c0-3 2.5-5 5.5-5s5.5 2 5.5 5"/><circle cx="17" cy="8.5" r="2.4"/><path d="M15.5 14.2c2.6.2 4.5 2.1 4.5 4.8"/></svg></div>
+          <div class="fw-lt"><div class="n">05</div><h3>Creators &amp; collabs</h3><p>who fuels the feed</p></div>
+        </div>
+        <div class="fw-chips">
+          <span class="fw-chip"><b>44%</b> of posts tag a creator</span><span class="fw-chip">top · tatemcrae 531K · jadepicon 508K</span><span class="fw-chip">#YouGotThis on 50%</span>
+        </div>
+      </div>
+
+      <div class="fw-row star">
+        <div class="fw-left">
+          <div class="fw-ic"><svg viewBox="0 0 24 24"><path d="M2 12s4-7 10-7 10 7 10 7-4 7-10 7-10-7-10-7z"/><circle cx="12" cy="12" r="3"/></svg></div>
+          <div class="fw-lt"><div class="n">06</div><h3>What's visible <span class="fw-tag star" style="white-space:nowrap">boundary</span></h3><p>public ≠ owned</p></div>
+        </div>
+        <div class="fw-chips">
+          <span class="fw-chip"><span class="vr-ok">✓</span> followers · likes · comments · formats · cadence</span><span class="fw-chip" style="border-color:rgba(255,107,107,.4)"><span class="vr-bad">✗</span> reach · saves · impressions · demographics</span>
+        </div>
+      </div>
+
+    </div>
+    <p class="fw-punch">Carousel-first and creator-fueled — <b>athletes + musicians</b>, not product shots. But public data stops at likes: <b>no reach, no audience</b>.</p>
+    <div class="foot"><span><span class="spark">✻</span> How we do competitor research with Claude</span><span>x</span></div>
+  </section>
+
+</div>
+<div class="hud" id="hud">1 / 4 &nbsp;·&nbsp; ← →</div>
+<script src="../_shared/slides.js"></script>
+</body>
+</html>
