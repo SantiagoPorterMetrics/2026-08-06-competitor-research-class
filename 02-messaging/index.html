@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>How we do competitor research with Claude · Messaging · Porter Metrics</title>
+<link rel="stylesheet" href="../_shared/styles.css">
+</head>
+<body>
+<div class="label" id="layoutLabel"></div>
+<div class="stage">
+
+  <!-- SECTION COVER -->
+  <section class="slide active pad divider" data-layout="Messaging">
+    <div class="kicker" style="color:var(--orange)">02 · Strategic levers</div>
+    <h2>Messaging</h2>
+    <p class="lead" style="margin-top:14px;max-width:60ch">The 2–3 claims a competitor repeats across the page — and whether they back them. Same <b style="color:var(--text)">Buffer</b> teardown, read for the words.</p>
+  </section>
+
+  <!-- 1 · THE WORDS ON THE PAGE (claims board) -->
+  <section class="slide pad" data-layout="The claims on the page" style="justify-content:center">
+    <style>
+      .cb-sub{font-size:17px;color:var(--text-soft);text-align:center;max-width:72ch;margin:12px auto 0;line-height:1.5}
+      .cb-sub b{color:var(--text)}
+      .cb-grid{display:flex;gap:20px;justify-content:center;margin:42px auto 0;width:100%;max-width:1140px;align-items:stretch}
+      .cb-card{flex:1;background:var(--bg-elev);border:1px solid rgba(255,255,255,.08);border-radius:16px;padding:24px 22px 20px;display:flex;flex-direction:column;gap:13px;box-shadow:0 18px 40px -24px rgba(0,0,0,.7)}
+      .cb-tag{font-size:11px;font-weight:800;letter-spacing:.09em;text-transform:uppercase;color:var(--orange)}
+      .cb-q{font-size:19px;color:var(--text);font-weight:650;line-height:1.32}
+      .cb-q .qm{color:var(--orange);font-weight:800}
+      .cb-sec{font-size:13px;color:var(--text-dim);line-height:1.45;border-top:1px solid rgba(255,255,255,.08);padding-top:12px;margin-top:auto;font-style:italic}
+    </style>
+    <div class="kicker" style="color:var(--orange);text-align:center">02 · Messaging · the words on the page</div>
+    <h2 style="margin-top:8px;text-align:center">Three claims, repeated everywhere</h2>
+    <p class="cb-sub">Messaging is what they say <b>again and again</b>. Buffer leans on three — pulled verbatim off the page.</p>
+    <div class="cb-grid">
+      <div class="cb-card">
+        <div class="cb-tag">Completeness</div>
+        <div class="cb-q"><span class="qm">“</span>The most complete set of publishing integrations, ever.<span class="qm">”</span></div>
+        <div class="cb-sec">“Connected to every platform and tool you use.”</div>
+      </div>
+      <div class="cb-card">
+        <div class="cb-tag">Universality</div>
+        <div class="cb-q"><span class="qm">“</span>For everyone.<span class="qm">”</span></div>
+        <div class="cb-sec">“Whoever you are, we've got you covered.”</div>
+      </div>
+      <div class="cb-card">
+        <div class="cb-tag">Transparency · humanity</div>
+        <div class="cb-q"><span class="qm">“</span>We are an open company.<span class="qm">”</span></div>
+        <div class="cb-sec">“No bots, just real people who care.”</div>
+      </div>
+    </div>
+    <div class="foot"><span><span class="spark">✻</span> How we do competitor research with Claude</span><span>x</span></div>
+  </section>
+
+  <!-- 2 · THE PROCESS · page -> read -> items -->
+  <section class="slide pad" data-layout="Page → read → the items" style="justify-content:center">
+    <style>
+      .pf-sub{font-size:17px;color:var(--text-soft);text-align:center;max-width:70ch;margin:12px auto 0;line-height:1.5}
+      .pf-sub b{color:var(--text)}
+      .pf-flow{display:flex;align-items:center;justify-content:center;margin-top:46px}
+      .pf-node{display:flex;flex-direction:column;align-items:center;gap:14px;width:236px}
+      .pf-card{width:216px;height:154px;border-radius:15px;background:var(--bg-elev);border:1px solid rgba(255,255,255,.08);box-shadow:0 22px 46px -24px rgba(0,0,0,.75);overflow:hidden;display:flex;flex-direction:column}
+      .pf-bar{height:31px;background:var(--code-bg);display:flex;align-items:center;gap:6px;padding:0 11px}
+      .pf-bar .d{width:8px;height:8px;border-radius:50%}
+      .pf-url{margin-left:6px;font-family:var(--mono);font-size:10.5px;color:var(--text-soft);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+      .pf-body{flex:1;padding:12px 14px;display:flex;flex-direction:column;gap:8px;justify-content:center}
+      .pf-q{height:8px;border-radius:4px;background:rgba(255,255,255,.13)}
+      .pf-claude{width:150px;height:150px;border-radius:24px;background:#fff;display:grid;place-items:center;box-shadow:0 22px 52px -20px rgba(217,119,87,.5);animation:pfpulse 2.6s ease-in-out infinite}
+      .pf-claude img{width:80px;height:80px}
+      @keyframes pfpulse{0%,100%{box-shadow:0 22px 52px -24px rgba(217,119,87,.32)}50%{box-shadow:0 22px 64px -14px rgba(217,119,87,.7)}}
+      .pf-out{width:216px;height:154px;border-radius:15px;background:linear-gradient(158deg,#2b211c,#232323);border:1px solid rgba(217,119,87,.24);padding:13px 16px;display:flex;flex-direction:column;gap:6px;justify-content:center}
+      .pf-out .o{display:flex;align-items:center;gap:9px;font-size:12px;color:var(--text-soft);font-weight:600}
+      .pf-out .o .n{font-family:var(--mono);font-size:9.5px;color:var(--orange);font-weight:700;width:14px}
+      .pf-label{font-size:13.5px;color:var(--text-dim);font-weight:600}
+      .pf-conn{width:92px;height:2px;background:rgba(255,255,255,.13);position:relative;margin:0 -4px;margin-bottom:32px}
+      .pf-conn::before{content:"";position:absolute;top:-3.5px;left:0;width:9px;height:9px;border-radius:50%;background:var(--orange);box-shadow:0 0 12px 2px rgba(217,119,87,.6);animation:pfrun 2.2s linear infinite}
+      .pf-conn.d2::before{animation-delay:1.1s}
+      @keyframes pfrun{0%{left:0;opacity:0}12%{opacity:1}88%{opacity:1}100%{left:84px;opacity:0}}
+      .pf-step{font-family:var(--mono);font-size:12px;color:var(--orange);font-weight:700;margin-bottom:2px}
+    </style>
+    <div class="kicker" style="color:var(--orange);text-align:center">02 · Messaging · the process</div>
+    <h2 style="margin-top:8px;text-align:center">Page → read → the items</h2>
+    <p class="pf-sub">Same method: Claude <b>reads the live copy</b> and names each move with Porter's banks — the figures, the triggers, the angle.</p>
+    <div class="pf-flow">
+      <div class="pf-node">
+        <div class="pf-step">1 · the page</div>
+        <div class="pf-card">
+          <div class="pf-bar"><span class="d" style="background:#ff5f57"></span><span class="d" style="background:#febc2e"></span><span class="d" style="background:#28c840"></span><span class="pf-url">buffer.com</span></div>
+          <div class="pf-body">
+            <div class="pf-q" style="width:88%"></div>
+            <div class="pf-q" style="width:70%"></div>
+            <div class="pf-q" style="width:80%"></div>
+            <div class="pf-q" style="width:58%"></div>
+          </div>
+        </div>
+        <div class="pf-label">The live copy</div>
+      </div>
+      <div class="pf-conn"></div>
+      <div class="pf-node">
+        <div class="pf-step">2 · read</div>
+        <div class="pf-claude"><img src="../_shared/logos/claude-code.svg" alt="Claude"></div>
+        <div class="pf-label">Claude reads it</div>
+      </div>
+      <div class="pf-conn d2"></div>
+      <div class="pf-node">
+        <div class="pf-step">3 · the items</div>
+        <div class="pf-out">
+          <div class="o"><span class="n">01</span> The claims</div>
+          <div class="o"><span class="n">02</span> Concept &amp; hook</div>
+          <div class="o"><span class="n">03</span> Angle</div>
+          <div class="o"><span class="n">04</span> Rhetorical figures</div>
+          <div class="o"><span class="n">05</span> Triggers</div>
+          <div class="o"><span class="n">06</span> Value read</div>
+        </div>
+        <div class="pf-label">The same items, every page</div>
+      </div>
+    </div>
+    <div class="foot"><span><span class="spark">✻</span> How we do competitor research with Claude</span><span>x</span></div>
+  </section>
+
+  <!-- 3 · THE ANALYSIS · the teardown, applied to Buffer -->
+  <section class="slide pad" data-layout="Buffer, through the framework" style="justify-content:center">
+    <style>
+      .fw-sub{font-size:16px;color:var(--text-soft);text-align:center;max-width:80ch;margin:11px auto 0;line-height:1.5}
+      .fw-sub b{color:var(--text)}
+      .fw-legend{display:flex;gap:20px;justify-content:center;margin:12px auto 0;font-size:12px;color:var(--text-dim)}
+      .fw-legend span{display:inline-flex;align-items:center;gap:7px}
+      .fw-legend i{width:11px;height:11px;border-radius:3px;display:inline-block}
+      .fw-table{width:100%;max-width:1190px;margin:12px auto 0}
+      .fw-row{display:flex;gap:18px;align-items:center;padding:8px 10px;border-top:1px solid rgba(255,255,255,.07)}
+      .fw-row:last-child{border-bottom:1px solid rgba(255,255,255,.07)}
+      .fw-row.star{background:linear-gradient(90deg,rgba(217,119,87,.07),transparent);border-left:2.5px solid var(--orange)}
+      .fw-left{width:214px;flex:none;display:flex;align-items:center;gap:11px}
+      .fw-ic{width:33px;height:33px;flex:none;border-radius:10px;background:rgba(217,119,87,.13);display:grid;place-items:center}
+      .fw-ic svg{width:18px;height:18px;stroke:var(--orange);fill:none;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+      .fw-lt .n{font-family:var(--mono);font-size:10.5px;color:var(--orange);font-weight:700}
+      .fw-lt h3{font-size:14.5px;color:var(--text);font-weight:750;margin:1px 0 1px}
+      .fw-lt p{font-size:11.5px;color:var(--text-dim);margin:0;line-height:1.3}
+      .fw-chips{display:flex;flex-wrap:wrap;gap:8px}
+      .fw-chip{font-family:var(--mono);font-size:12px;color:var(--text-soft);background:var(--bg-elev);border:1px solid rgba(255,255,255,.09);border-radius:7px;padding:5px 10px;white-space:nowrap}
+      .fw-chip b{color:var(--text);font-weight:700}
+      .fw-tag{font-size:9.5px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:var(--text-dim);border:1px solid rgba(255,255,255,.14);border-radius:20px;padding:2px 8px;margin-left:8px}
+      .fw-tag.star{color:var(--orange);border-color:rgba(217,119,87,.45)}
+      .vr-ok{color:#33d17a;font-weight:800}
+      .vr-bad{color:#ff6b6b;font-weight:800}
+      .fw-punch{text-align:center;color:var(--text);font-size:16px;margin-top:22px;font-weight:600}
+      .fw-punch b{color:var(--orange)}
+    </style>
+    <div class="kicker" style="color:var(--orange);text-align:center">02 · Messaging · the analysis</div>
+    <h2 style="margin-top:6px;text-align:center">Buffer, through the framework</h2>
+    <p class="fw-sub">Each move named with a real bank entry — the figure, the trigger, the angle. Never an invented label.</p>
+    <div class="fw-legend"><span><i style="background:rgba(217,119,87,.6)"></i>read off the page</span><span><i style="background:rgba(255,255,255,.18)"></i>the value read · does it hold up?</span></div>
+
+    <div class="fw-table">
+
+      <div class="fw-row">
+        <div class="fw-left">
+          <div class="fw-ic"><svg viewBox="0 0 24 24"><path d="M4 5h16v11H9l-4 3v-3H4z"/><path d="M8 9h8"/><path d="M8 12.5h5"/></svg></div>
+          <div class="fw-lt"><div class="n">01</div><h3>The claims</h3><p>what repeats</p></div>
+        </div>
+        <div class="fw-chips">
+          <span class="fw-chip">completeness · <b>"complete… ever"</b></span><span class="fw-chip">universality · <b>"for everyone"</b></span><span class="fw-chip">transparency · <b>"no bots"</b></span>
+        </div>
+      </div>
+
+      <div class="fw-row">
+        <div class="fw-left">
+          <div class="fw-ic"><svg viewBox="0 0 24 24"><path d="M12 3a6 6 0 0 0-4 10.5c.8.8 1 1.5 1 2.5h6c0-1 .2-1.7 1-2.5A6 6 0 0 0 12 3z"/><path d="M9 21h6"/></svg></div>
+          <div class="fw-lt"><div class="n">02</div><h3>Concept &amp; hook</h3><p>the one big idea</p></div>
+        </div>
+        <div class="fw-chips">
+          <span class="fw-chip">concept · <b>"run all your social from one place"</b></span><span class="fw-chip">hook · identity · "your social media workspace"</span>
+        </div>
+      </div>
+
+      <div class="fw-row">
+        <div class="fw-left">
+          <div class="fw-ic"><svg viewBox="0 0 24 24"><path d="M3 12h13"/><path d="M12 7l5 5-5 5"/><path d="M20 5v14"/></svg></div>
+          <div class="fw-lt"><div class="n">03</div><h3>Angle</h3><p>how it's told</p></div>
+        </div>
+        <div class="fw-chips">
+          <span class="fw-chip">before/after · <b>zero → one → one million</b></span><span class="fw-chip">over a feature listicle</span><span class="fw-chip">aspirational, not pain-relief</span>
+        </div>
+      </div>
+
+      <div class="fw-row">
+        <div class="fw-left">
+          <div class="fw-ic"><svg viewBox="0 0 24 24"><path d="M6 4h12"/><path d="M12 4v16"/><path d="M9 20h6"/></svg></div>
+          <div class="fw-lt"><div class="n">04</div><h3>Rhetorical figures</h3><p>named from the bank</p></div>
+        </div>
+        <div class="fw-chips">
+          <span class="fw-chip">Gradatio</span><span class="fw-chip">Tricolon</span><span class="fw-chip">Correctio <b>· "not just X"</b> (gastado)</span><span class="fw-chip">Hipérbole · "10x"</span>
+        </div>
+      </div>
+
+      <div class="fw-row">
+        <div class="fw-left">
+          <div class="fw-ic"><svg viewBox="0 0 24 24"><path d="M13 2 4 14h7l-1 8 9-12h-7l1-8z"/></svg></div>
+          <div class="fw-lt"><div class="n">05</div><h3>Triggers</h3><p>the levers leaned on</p></div>
+        </div>
+        <div class="fw-chips">
+          <span class="fw-chip"><b>social proof</b> (dominant)</span><span class="fw-chip">authority · transparency</span><span class="fw-chip">reciprocity</span><span class="fw-chip">commitment</span><span class="fw-chip">unity</span>
+        </div>
+      </div>
+
+      <div class="fw-row star">
+        <div class="fw-left">
+          <div class="fw-ic"><svg viewBox="0 0 24 24"><path d="M2 12s4-7 10-7 10 7 10 7-4 7-10 7-10-7-10-7z"/><circle cx="12" cy="12" r="3"/></svg></div>
+          <div class="fw-lt"><div class="n">06</div><h3>Value read <span class="fw-tag star" style="white-space:nowrap">holds up?</span></h3><p>claim vs proof</p></div>
+        </div>
+        <div class="fw-chips">
+          <span class="fw-chip" style="border-color:rgba(255,107,107,.5)">★ evidence-per-claim <span class="vr-bad">✗</span></span><span class="fw-chip">present-tense <span class="vr-bad">✗</span> ("will help")</span><span class="fw-chip">one-term-one-thing <span class="vr-ok">✓</span></span>
+        </div>
+      </div>
+
+    </div>
+    <p class="fw-punch">Bold and human — but <b>"most complete… ever"</b> and <b>"10x"</b> carry no proof. Confidence without evidence.</p>
+    <div class="foot"><span><span class="spark">✻</span> How we do competitor research with Claude</span><span>x</span></div>
+  </section>
+
+</div>
+<div class="hud" id="hud">1 / 4 &nbsp;·&nbsp; ← →</div>
+<script src="../_shared/slides.js"></script>
+</body>
+</html>
