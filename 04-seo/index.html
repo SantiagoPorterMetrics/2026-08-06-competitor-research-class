@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>How we do competitor research with Claude · SEO · Porter Metrics</title>
+<link rel="stylesheet" href="../_shared/styles.css">
+</head>
+<body>
+<div class="label" id="layoutLabel"></div>
+<div class="stage">
+
+  <!-- SECTION COVER -->
+  <section class="slide active pad divider" data-layout="SEO">
+    <div class="kicker" style="color:var(--orange)">04 · Tactics</div>
+    <h2>SEO</h2>
+    <p class="lead" style="margin-top:14px;max-width:62ch">What a competitor publishes — and whether any of it actually ranks. Read live from <b style="color:var(--text)">sitemaps + real rankings</b>, using <b style="color:var(--text)">ClickUp</b> as our worked example.</p>
+  </section>
+
+  <!-- 1 · THE REAL THING · the sitemap (profiled) -->
+  <section class="slide pad" data-layout="Read the sitemap honestly" style="justify-content:center">
+    <style>
+      .sm-sub{font-size:17px;color:var(--text-soft);text-align:center;max-width:74ch;margin:12px auto 0;line-height:1.5}
+      .sm-sub b{color:var(--text)}
+      .sm-term{width:880px;max-width:100%;margin:28px auto 0}
+      .sm-term .body{padding:16px 18px}
+      .sm-row{font-family:var(--mono);font-size:13px;line-height:1.95;color:var(--text-soft);white-space:pre;display:grid;grid-template-columns:130px 118px 128px 1fr;align-items:baseline}
+      .sm-row .u{color:var(--text)}
+      .sm-tag{font-weight:700}
+      .sm-tag.d{color:#33d17a}
+      .sm-tag.r{color:#ff6b6b}
+      .sm-tag.n{color:var(--text-faint)}
+      .sm-sep{border-top:1px dashed rgba(255,255,255,.14);margin:9px 0}
+      .sm-tot{font-family:var(--mono);font-size:13px;color:var(--text);font-weight:600}
+      .sm-cap{text-align:center;color:var(--text-dim);font-size:14px;margin-top:20px}
+      .sm-cap b{color:var(--orange)}
+    </style>
+    <div class="kicker" style="color:var(--orange);text-align:center">04 · SEO · the page we analyze</div>
+    <h2 style="margin-top:8px;text-align:center">Read the sitemap honestly</h2>
+    <p class="sm-sub">A sitemap is the competitor's whole map — but it <b>lies about dates</b>. Profile it with <b>curl + python</b> before you trust a single number.</p>
+    <div class="term sm-term">
+      <div class="bar"><span class="dot red"></span><span class="dot yel"></span><span class="dot grn"></span><span class="title"><span class="spark">✻</span> profile clickup.com/sitemap.xml → 27 sub-sitemaps</span></div>
+      <div class="body">
+        <div class="sm-row"><span class="u">6,088 urls</span><span>6,088 dated</span><span>top-day  4%</span><span class="sm-tag d">[datable]   blog</span></div>
+        <div class="sm-row"><span class="u">1,526 urls</span><span>1,526 dated</span><span>top-day 100%</span><span class="sm-tag r">[REBUILD]   sitemap-next   ← 1 deploy, not 1,526 edits</span></div>
+        <div class="sm-row"><span class="u">1,437 urls</span><span>1,437 dated</span><span>top-day 100%</span><span class="sm-tag r">[REBUILD]   programmatic</span></div>
+        <div class="sm-row"><span class="u">35,132 urls</span><span>0 dated</span><span>top-day  0%</span><span class="sm-tag n">[NO DATE]   blog-programmatic</span></div>
+        <div class="sm-row"><span class="u">6,010 urls</span><span>0 dated</span><span>top-day  0%</span><span class="sm-tag n">[NO DATE]   blog-es · +19 more locales…</span></div>
+        <div class="sm-sep"></div>
+        <div class="sm-tot">27 sitemaps · 160,420 urls · <span style="color:#ff6b6b">2 REBUILD</span> · <span style="color:var(--text-faint)">24 NO-DATE</span> · <span style="color:#33d17a">1 datable</span></div>
+      </div>
+    </div>
+    <p class="sm-cap">The honest signal isn't 160K, or 1,526 — it's the <b>one datable sitemap</b>: the blog.</p>
+    <div class="foot"><span><span class="spark">✻</span> How we do competitor research with Claude</span><span>x</span></div>
+  </section>
+
+  <!-- 2 · THE PROCESS · sitemap -> read -> items -->
+  <section class="slide pad" data-layout="Sitemap → read → the items" style="justify-content:center">
+    <style>
+      .pf-sub{font-size:17px;color:var(--text-soft);text-align:center;max-width:74ch;margin:12px auto 0;line-height:1.5}
+      .pf-sub b{color:var(--text)}
+      .pf-flow{display:flex;align-items:center;justify-content:center;margin-top:46px}
+      .pf-node{display:flex;flex-direction:column;align-items:center;gap:14px;width:236px}
+      .pf-card{width:216px;height:154px;border-radius:15px;background:var(--bg-elev);border:1px solid rgba(255,255,255,.08);box-shadow:0 22px 46px -24px rgba(0,0,0,.75);overflow:hidden;display:flex;flex-direction:column}
+      .pf-bar{height:31px;background:var(--code-bg);display:flex;align-items:center;gap:6px;padding:0 11px}
+      .pf-bar .d{width:8px;height:8px;border-radius:50%}
+      .pf-url{margin-left:6px;font-family:var(--mono);font-size:10.5px;color:var(--text-soft);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+      .pf-body{flex:1;padding:11px 13px;display:flex;flex-direction:column;gap:5px;justify-content:center;font-family:var(--mono);font-size:9.5px;color:var(--text-dim)}
+      .pf-body .xl{color:var(--text-faint)}
+      .pf-claude{width:150px;height:150px;border-radius:24px;background:#fff;display:grid;place-items:center;box-shadow:0 22px 52px -20px rgba(217,119,87,.5);animation:pfpulse 2.6s ease-in-out infinite}
+      .pf-claude img{width:80px;height:80px}
+      @keyframes pfpulse{0%,100%{box-shadow:0 22px 52px -24px rgba(217,119,87,.32)}50%{box-shadow:0 22px 64px -14px rgba(217,119,87,.7)}}
+      .pf-out{width:216px;height:154px;border-radius:15px;background:linear-gradient(158deg,#2b211c,#232323);border:1px solid rgba(217,119,87,.24);padding:13px 16px;display:flex;flex-direction:column;gap:5px;justify-content:center}
+      .pf-out .o{display:flex;align-items:center;gap:9px;font-size:11.5px;color:var(--text-soft);font-weight:600}
+      .pf-out .o .n{font-family:var(--mono);font-size:9.5px;color:var(--orange);font-weight:700;width:14px}
+      .pf-label{font-size:13.5px;color:var(--text-dim);font-weight:600}
+      .pf-conn{width:92px;height:2px;background:rgba(255,255,255,.13);position:relative;margin:0 -4px;margin-bottom:32px}
+      .pf-conn::before{content:"";position:absolute;top:-3.5px;left:0;width:9px;height:9px;border-radius:50%;background:var(--orange);box-shadow:0 0 12px 2px rgba(217,119,87,.6);animation:pfrun 2.2s linear infinite}
+      .pf-conn.d2::before{animation-delay:1.1s}
+      @keyframes pfrun{0%{left:0;opacity:0}12%{opacity:1}88%{opacity:1}100%{left:84px;opacity:0}}
+      .pf-step{font-family:var(--mono);font-size:12px;color:var(--orange);font-weight:700;margin-bottom:2px}
+    </style>
+    <div class="kicker" style="color:var(--orange);text-align:center">04 · SEO · the process</div>
+    <h2 style="margin-top:8px;text-align:center">Sitemap → read → the items</h2>
+    <p class="pf-sub">Claude reads the <b>sitemaps + Wayback</b>, dates them honestly, classifies each page, then <b>joins to real rankings</b> — publishing vs actually winning.</p>
+    <div class="pf-flow">
+      <div class="pf-node">
+        <div class="pf-step">1 · the site</div>
+        <div class="pf-card">
+          <div class="pf-bar"><span class="d" style="background:#ff5f57"></span><span class="d" style="background:#febc2e"></span><span class="d" style="background:#28c840"></span><span class="pf-url">clickup.com/sitemap.xml</span></div>
+          <div class="pf-body">
+            <div>&lt;loc&gt;/blog/claude-alternatives</div>
+            <div>&lt;loc&gt;/blog/claude-vs-chatgpt</div>
+            <div class="xl">&lt;lastmod&gt; 2026-…</div>
+            <div class="xl">27 sub-sitemaps · 160K urls</div>
+          </div>
+        </div>
+        <div class="pf-label">Sitemaps + Wayback</div>
+      </div>
+      <div class="pf-conn"></div>
+      <div class="pf-node">
+        <div class="pf-step">2 · read</div>
+        <div class="pf-claude"><img src="../_shared/logos/claude-code.svg" alt="Claude"></div>
+        <div class="pf-label">Claude + Porter read it</div>
+      </div>
+      <div class="pf-conn d2"></div>
+      <div class="pf-node">
+        <div class="pf-step">3 · the items</div>
+        <div class="pf-out">
+          <div class="o"><span class="n">01</span> Footprint</div>
+          <div class="o"><span class="n">02</span> Datable vs rebuild</div>
+          <div class="o"><span class="n">03</span> Classification</div>
+          <div class="o"><span class="n">04</span> The content bet</div>
+          <div class="o"><span class="n">05</span> Publish vs rank</div>
+          <div class="o"><span class="n">06</span> The read</div>
+        </div>
+        <div class="pf-label">The same items, every site</div>
+      </div>
+    </div>
+    <div class="foot"><span><span class="spark">✻</span> How we do competitor research with Claude</span><span>x</span></div>
+  </section>
+
+  <!-- 3 · THE ANALYSIS · applied to ClickUp -->
+  <section class="slide pad" data-layout="ClickUp, through the framework" style="justify-content:center">
+    <style>
+      .fw-sub{font-size:16px;color:var(--text-soft);text-align:center;max-width:82ch;margin:11px auto 0;line-height:1.5}
+      .fw-sub b{color:var(--text)}
+      .fw-legend{display:flex;gap:20px;justify-content:center;margin:12px auto 0;font-size:12px;color:var(--text-dim)}
+      .fw-legend span{display:inline-flex;align-items:center;gap:7px}
+      .fw-legend i{width:11px;height:11px;border-radius:3px;display:inline-block}
+      .fw-table{width:100%;max-width:1190px;margin:6px auto 0}
+      .fw-row{display:flex;gap:18px;align-items:center;padding:6px 10px;border-top:1px solid rgba(255,255,255,.07)}
+      .fw-row:last-child{border-bottom:1px solid rgba(255,255,255,.07)}
+      .fw-row.star{background:linear-gradient(90deg,rgba(217,119,87,.07),transparent);border-left:2.5px solid var(--orange)}
+      .fw-left{width:214px;flex:none;display:flex;align-items:center;gap:11px}
+      .fw-ic{width:33px;height:33px;flex:none;border-radius:10px;background:rgba(217,119,87,.13);display:grid;place-items:center}
+      .fw-ic svg{width:18px;height:18px;stroke:var(--orange);fill:none;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+      .fw-lt .n{font-family:var(--mono);font-size:10.5px;color:var(--orange);font-weight:700}
+      .fw-lt h3{font-size:14.5px;color:var(--text);font-weight:750;margin:1px 0 1px}
+      .fw-lt p{font-size:11.5px;color:var(--text-dim);margin:0;line-height:1.3}
+      .fw-chips{display:flex;flex-wrap:wrap;gap:8px}
+      .fw-chip{font-family:var(--mono);font-size:12px;color:var(--text-soft);background:var(--bg-elev);border:1px solid rgba(255,255,255,.09);border-radius:7px;padding:5px 10px;white-space:nowrap}
+      .fw-chip b{color:var(--text);font-weight:700}
+      .fw-tag{font-size:9.5px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:var(--text-dim);border:1px solid rgba(255,255,255,.14);border-radius:20px;padding:2px 8px;margin-left:8px}
+      .fw-tag.star{color:var(--orange);border-color:rgba(217,119,87,.45)}
+      .vr-bad{color:#ff6b6b;font-weight:800}
+      .fw-punch{text-align:center;color:var(--text);font-size:15.5px;margin-top:10px;font-weight:600}
+      .fw-punch b{color:var(--orange)}
+    </style>
+    <div class="kicker" style="color:var(--orange);text-align:center">04 · SEO · the analysis</div>
+    <h2 style="margin-top:6px;text-align:center">ClickUp, through the framework</h2>
+    <p class="fw-sub">Sitemaps profiled live today; rankings from a live SERP check (US). <b>Publishing ≠ ranking</b> — the join is where the truth is.</p>
+    <div class="fw-legend"><span><i style="background:rgba(217,119,87,.6)"></i>measured live</span><span><i style="background:rgba(255,255,255,.18)"></i>the join · publish vs rank</span></div>
+
+    <div class="fw-table">
+
+      <div class="fw-row">
+        <div class="fw-left">
+          <div class="fw-ic"><svg viewBox="0 0 24 24"><path d="M3 7l9-4 9 4-9 4-9-4z"/><path d="M3 12l9 4 9-4"/><path d="M3 17l9 4 9-4"/></svg></div>
+          <div class="fw-lt"><div class="n">01</div><h3>Footprint</h3><p>the whole map</p></div>
+        </div>
+        <div class="fw-chips">
+          <span class="fw-chip"><b>160,420</b> URLs</span><span class="fw-chip">27 sub-sitemaps</span><span class="fw-chip">~15 locales</span>
+        </div>
+      </div>
+
+      <div class="fw-row">
+        <div class="fw-left">
+          <div class="fw-ic"><svg viewBox="0 0 24 24"><rect x="4" y="5" width="16" height="16" rx="2"/><path d="M4 9.5h16"/><path d="M8 3v4"/><path d="M16 3v4"/><path d="M9 15l2 2 4-4"/></svg></div>
+          <div class="fw-lt"><div class="n">02</div><h3>The date trap</h3><p>the sitemap lies</p></div>
+        </div>
+        <div class="fw-chips">
+          <span class="fw-chip"><b>24 / 27</b> sin lastmod</span><span class="fw-chip">sitemap-next 1,526 = <b>1 deploy</b>, not edits</span><span class="fw-chip">only the blog is datable</span>
+        </div>
+      </div>
+
+      <div class="fw-row">
+        <div class="fw-left">
+          <div class="fw-ic"><svg viewBox="0 0 24 24"><rect x="4" y="4" width="7" height="7" rx="1"/><rect x="13" y="4" width="7" height="7" rx="1"/><rect x="4" y="13" width="7" height="7" rx="1"/><rect x="13" y="13" width="7" height="7" rx="1"/></svg></div>
+          <div class="fw-lt"><div class="n">03</div><h3>What they build</h3><p>page types</p></div>
+        </div>
+        <div class="fw-chips">
+          <span class="fw-chip">programmatic blog + templates</span><span class="fw-chip">TOFU/MOFU at scale</span><span class="fw-chip">how-to · vs-X · alternatives</span>
+        </div>
+      </div>
+
+      <div class="fw-row">
+        <div class="fw-left">
+          <div class="fw-ic"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 8v8"/><path d="M8 12h8"/></svg></div>
+          <div class="fw-lt"><div class="n">04</div><h3>The content bet</h3><p>where they doubled down</p></div>
+        </div>
+        <div class="fw-chips">
+          <span class="fw-chip"><b>41</b> en-US "claude" posts</span><span class="fw-chip"><b>796</b> across locales</span><span class="fw-chip">claude-vs-* · how-to-use-claude · alternatives</span>
+        </div>
+      </div>
+
+      <div class="fw-row star">
+        <div class="fw-left">
+          <div class="fw-ic"><svg viewBox="0 0 24 24"><path d="M3 20h18"/><path d="M6 20v-5"/><path d="M11 20v-9"/><path d="M16 20v-3"/><path d="M21 20V8"/></svg></div>
+          <div class="fw-lt"><div class="n">05</div><h3>Publish ≠ rank <span class="fw-tag star" style="white-space:nowrap">the join</span></h3><p>do they actually win?</p></div>
+        </div>
+        <div class="fw-chips">
+          <span class="fw-chip">"claude alternatives" → <span class="vr-bad">#57</span></span><span class="fw-chip">"claude ai review" → <span class="vr-bad">#44</span></span><span class="fw-chip" style="border-color:rgba(255,107,107,.5)">"vs chatgpt" · "how to use" → <span class="vr-bad">not in top 100</span></span>
+        </div>
+      </div>
+
+      <div class="fw-row">
+        <div class="fw-left">
+          <div class="fw-ic"><svg viewBox="0 0 24 24"><path d="M2 12s4-7 10-7 10 7 10 7-4 7-10 7-10-7-10-7z"/><circle cx="12" cy="12" r="3"/></svg></div>
+          <div class="fw-lt"><div class="n">06</div><h3>The read</h3><p>what it means</p></div>
+        </div>
+        <div class="fw-chips">
+          <span class="fw-chip">motion = <b>volume</b>, not ranking</span><span class="fw-chip">a content firehose that mostly misses page 1</span>
+        </div>
+      </div>
+
+    </div>
+    <p class="fw-punch">A firehose — <b>41 "claude" posts</b> — but most never crack page 1. The sitemap looks busy; <b>the rankings say otherwise</b>.</p>
+    <div class="foot"><span><span class="spark">✻</span> How we do competitor research with Claude</span><span>x</span></div>
+  </section>
+
+</div>
+<div class="hud" id="hud">1 / 4 &nbsp;·&nbsp; ← →</div>
+<script src="../_shared/slides.js"></script>
+</body>
+</html>
