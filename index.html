@@ -1,0 +1,1168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>How we do competitor research with Claude · Porter Metrics</title>
+<link rel="stylesheet" href="_shared/styles.css">
+</head>
+<body>
+<div class="label" id="layoutLabel"></div>
+<div class="stage">
+  <!-- COVER -->
+  <section class="slide active pad divider" data-layout="Competitor Research">
+    <h2>Competitor Research</h2>
+  </section>
+
+  <!-- The 4 kinds of research -->
+  <section class="slide pad" data-layout="Four kinds of research" style="justify-content:center">
+    <style>
+      .rt-sub{font-size:17px;color:var(--text-soft);text-align:center;max-width:68ch;margin:12px auto 0;line-height:1.5}
+      .rt-sub b{color:var(--text)}
+      .rt-grid{display:flex;gap:22px;justify-content:center;margin:46px auto 0;width:100%;max-width:1120px}
+      .rt-card{flex:1;background:var(--bg-elev);border:1px solid rgba(255,255,255,.08);border-radius:16px;padding:26px 22px 22px;display:flex;flex-direction:column;gap:13px;box-shadow:0 18px 40px -24px rgba(0,0,0,.7);position:relative}
+      .rt-card.dim{opacity:.5}
+      .rt-card.on{border-color:rgba(217,119,87,.5);background:linear-gradient(158deg,#2b211c,#232323);box-shadow:0 26px 58px -18px rgba(217,119,87,.42)}
+      .rt-ic{width:52px;height:52px;border-radius:13px;background:rgba(255,255,255,.06);display:grid;place-items:center}
+      .rt-card.on .rt-ic{background:rgba(217,119,87,.16)}
+      .rt-ic svg{width:27px;height:27px;stroke:var(--text-dim);fill:none;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+      .rt-card.on .rt-ic svg{stroke:var(--orange)}
+      .rt-h{font-size:17px;font-weight:750;color:var(--text)}
+      .rt-card.dim .rt-h{color:var(--text-soft)}
+      .rt-p{font-size:13.5px;color:var(--text-dim);line-height:1.5;margin:0}
+      .rt-badge{position:absolute;top:-12px;left:50%;transform:translateX(-50%);background:var(--orange);color:#1a1a1a;font-size:10.5px;font-weight:800;letter-spacing:.07em;text-transform:uppercase;padding:5px 13px;border-radius:20px;white-space:nowrap;box-shadow:0 8px 20px -6px rgba(217,119,87,.6)}
+      .rt-foot{text-align:center;color:var(--text-soft);font-size:15px;margin-top:34px}
+      .rt-foot b{color:var(--orange);font-weight:750}
+    </style>
+    <div class="kicker" style="color:var(--orange);text-align:center">Intro · the landscape</div>
+    <h2 style="margin-top:8px;text-align:center">Four kinds of research</h2>
+    <p class="rt-sub">Before you sell anything, you research. There are <b>four angles</b> — and they answer four different questions.</p>
+    <div class="rt-grid">
+
+      <!-- Market -->
+      <div class="rt-card dim">
+        <div class="rt-ic"><svg viewBox="0 0 24 24"><path d="M3 20h18"/><path d="M6 20v-7"/><path d="M11 20V6"/><path d="M16 20v-10"/><path d="M21 20V4"/></svg></div>
+        <div class="rt-h">Market research</div>
+        <p class="rt-p">The whole category — its size, its trends, where demand is heading.</p>
+      </div>
+
+      <!-- Audience -->
+      <div class="rt-card dim">
+        <div class="rt-ic"><svg viewBox="0 0 24 24"><circle cx="9" cy="8" r="3.2"/><path d="M3.5 19c0-3 2.5-5 5.5-5s5.5 2 5.5 5"/><circle cx="17" cy="8.5" r="2.4"/><path d="M15.5 14.2c2.6.2 4.5 2.1 4.5 4.8"/></svg></div>
+        <div class="rt-h">Audience research</div>
+        <p class="rt-p">Who you sell to — their pains, their language, what they actually want.</p>
+      </div>
+
+      <!-- Content -->
+      <div class="rt-card dim">
+        <div class="rt-ic"><svg viewBox="0 0 24 24"><path d="M6 3h9l3 3v15H6z"/><path d="M14 3v4h4"/><path d="M9 12h6"/><path d="M9 16h6"/></svg></div>
+        <div class="rt-h">Content research</div>
+        <p class="rt-p">What to say — the topics, angles and formats that actually land.</p>
+      </div>
+
+      <!-- Competitor (focus) -->
+      <div class="rt-card on">
+        <div class="rt-badge">This class</div>
+        <div class="rt-ic"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><circle cx="12" cy="12" r="3.5"/><path d="M12 1.5v4"/><path d="M12 18.5v4"/><path d="M1.5 12h4"/><path d="M18.5 12h4"/></svg></div>
+        <div class="rt-h">Competitor research</div>
+        <p class="rt-p">Who you're up against — their ads, pages, keywords and every move they make.</p>
+      </div>
+
+    </div>
+    <p class="rt-foot">This class is about the fourth: <b>competitor research</b>.</p>
+    <div class="foot"><span><span class="spark">✻</span> How we do competitor research with Claude</span><span>x</span></div>
+  </section>
+
+  <!-- What can we learn · the index of use cases -->
+  <section class="slide pad" data-layout="What can we learn?" style="justify-content:center">
+    <style>
+      .idx-sub{font-size:16.5px;color:var(--text-soft);text-align:center;max-width:74ch;margin:12px auto 0;line-height:1.5}
+      .idx-sub b{color:var(--text)}
+      .idx-group{width:100%;max-width:1130px;margin:0 auto}
+      .idx-glabel{display:flex;align-items:center;gap:13px;margin:0 4px 13px}
+      .idx-glabel .t{font-size:12px;font-weight:800;letter-spacing:.11em;text-transform:uppercase;color:var(--orange);white-space:nowrap}
+      .idx-glabel .d{font-size:13px;color:var(--text-dim);white-space:nowrap}
+      .idx-glabel .rule{flex:1;height:1px;background:rgba(255,255,255,.09)}
+      .idx-row{display:flex;gap:16px}
+      .idx-card{flex:1;background:var(--bg-elev);border:1px solid rgba(255,255,255,.08);border-radius:13px;padding:15px 16px;display:flex;gap:13px;align-items:flex-start;box-shadow:0 14px 32px -24px rgba(0,0,0,.7)}
+      .idx-ic{width:40px;height:40px;flex:none;border-radius:11px;background:rgba(217,119,87,.13);display:grid;place-items:center}
+      .idx-ic svg{width:21px;height:21px;stroke:var(--orange);fill:none;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+      .idx-tx{min-width:0}
+      .idx-tx .n{font-family:var(--mono);font-size:11px;color:var(--orange);font-weight:700}
+      .idx-tx h3{font-size:15.5px;color:var(--text);font-weight:750;margin:1px 0 3px}
+      .idx-tx p{font-size:12.5px;color:var(--text-dim);line-height:1.45;margin:0}
+      .idx-gap{height:22px}
+    </style>
+    <div class="kicker" style="color:var(--orange);text-align:center">Intro · what's knowable</div>
+    <h2 style="margin-top:8px;text-align:center">What can we learn about a competitor?</h2>
+    <p class="idx-sub">Two tiers: the <b>strategic levers</b> behind their marketing — and the <b>tactics</b> where those levers show up. We'll take them <b>one by one</b>.</p>
+
+    <div class="idx-group" style="margin-top:36px">
+      <div class="idx-glabel"><span class="t">Strategic levers</span><span class="d">the decisions behind it all</span><span class="rule"></span></div>
+      <div class="idx-row">
+        <div class="idx-card">
+          <div class="idx-ic"><svg viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="1.5"/><path d="M12 4v16"/><path d="M4 12h16"/><circle cx="16.2" cy="7.8" r="1.7"/></svg></div>
+          <div class="idx-tx"><div class="n">01</div><h3>Positioning</h3><p>The space they claim — who they say they're for.</p></div>
+        </div>
+        <div class="idx-card">
+          <div class="idx-ic"><svg viewBox="0 0 24 24"><path d="M4 5h16v11H9l-4 3v-3H4z"/><path d="M8 9h8"/><path d="M8 12.5h5"/></svg></div>
+          <div class="idx-tx"><div class="n">02</div><h3>Messaging</h3><p>The words, promises and angles they lead with.</p></div>
+        </div>
+        <div class="idx-card">
+          <div class="idx-ic"><svg viewBox="0 0 24 24"><path d="M20 12.6 12.6 20a1.4 1.4 0 0 1-2 0l-6.6-6.6a1.4 1.4 0 0 1-.4-1V4.6A1.6 1.6 0 0 1 5.2 3h4.8a1.4 1.4 0 0 1 1 .4L20 10.6a1.4 1.4 0 0 1 0 2z"/><circle cx="7.6" cy="7.6" r="1.3"/></svg></div>
+          <div class="idx-tx"><div class="n">03</div><h3>Pricing</h3><p>Their plans, tiers and how they package value.</p></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="idx-gap"></div>
+
+    <div class="idx-group">
+      <div class="idx-glabel"><span class="t">Tactics</span><span class="d">where those decisions show up</span><span class="rule"></span></div>
+      <div class="idx-row">
+        <div class="idx-card">
+          <div class="idx-ic"><svg viewBox="0 0 24 24"><circle cx="10.5" cy="10.5" r="6"/><path d="M15 15l5 5"/></svg></div>
+          <div class="idx-tx"><div class="n">04</div><h3>SEO</h3><p>The keywords and pages they rank for on Google.</p></div>
+        </div>
+        <div class="idx-card">
+          <div class="idx-ic"><svg viewBox="0 0 24 24"><path d="M3 10v4h3l9 5V5L6 10H3z"/><path d="M18 9a4 4 0 0 1 0 6"/></svg></div>
+          <div class="idx-tx"><div class="n">05</div><h3>Ads</h3><p>The paid creatives they're running right now.</p></div>
+        </div>
+        <div class="idx-card">
+          <div class="idx-ic"><svg viewBox="0 0 24 24"><circle cx="6" cy="12" r="2.4"/><circle cx="17" cy="6" r="2.4"/><circle cx="17" cy="18" r="2.4"/><path d="M8.2 11 14.8 7.2"/><path d="M8.2 13 14.8 16.8"/></svg></div>
+          <div class="idx-tx"><div class="n">06</div><h3>Social Media</h3><p>What they post — and how their audience reacts.</p></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="foot"><span><span class="spark">✻</span> How we do competitor research with Claude</span><span>x</span></div>
+  </section>
+
+  <!-- SECTION COVER -->
+  <section class="slide pad divider" data-layout="Positioning">
+    <div class="kicker" style="color:var(--orange)">01 · Strategic levers</div>
+    <h2>Positioning</h2>
+    <p class="lead" style="margin-top:14px;max-width:60ch">The category a competitor claims — and whether they actually defend it. Read live with Claude, using <b style="color:var(--text)">Buffer</b> as our worked example.</p>
+  </section>
+
+  <!-- 1 · THE REAL PAGE (screenshot) -->
+  <section class="slide pad" data-layout="Start with the real page" style="justify-content:center">
+    <style>
+      .sh-sub{font-size:17px;color:var(--text-soft);text-align:center;max-width:70ch;margin:12px auto 0;line-height:1.5}
+      .sh-sub b{color:var(--text)}
+      .sh-win{width:900px;max-width:100%;margin:28px auto 0;border-radius:14px;overflow:hidden;border:1px solid rgba(255,255,255,.12);box-shadow:0 34px 80px -34px rgba(0,0,0,.85)}
+      .sh-bar{height:38px;background:#2b2b2b;display:flex;align-items:center;gap:8px;padding:0 14px}
+      .sh-bar .d{width:11px;height:11px;border-radius:50%}
+      .sh-url{margin:0 auto;font-family:var(--mono);font-size:12px;color:var(--text-soft);background:rgba(255,255,255,.08);padding:5px 16px;border-radius:7px}
+      .sh-win img{display:block;width:100%;height:auto}
+    </style>
+    <div class="kicker" style="color:var(--orange);text-align:center">01 · Positioning · the page we analyze</div>
+    <h2 style="margin-top:8px;text-align:center">Start with the real page</h2>
+    <p class="sh-sub">The homepage is where positioning lives — the hero line is the <b>category claim</b>.</p>
+    <div class="sh-win">
+      <div class="sh-bar"><span class="d" style="background:#ff5f57"></span><span class="d" style="background:#febc2e"></span><span class="d" style="background:#28c840"></span><span class="sh-url">buffer.com</span></div>
+      <img src="01-positioning/assets/buffer-home.png" alt="Buffer homepage">
+    </div>
+    <div class="foot"><span><span class="spark">✻</span> How we do competitor research with Claude</span><span>x</span></div>
+  </section>
+
+  <!-- 2 · THE PROCESS · page -> read -> items -->
+  <section class="slide pad" data-layout="Page → read → the items" style="justify-content:center">
+    <style>
+      .pf-sub{font-size:17px;color:var(--text-soft);text-align:center;max-width:70ch;margin:12px auto 0;line-height:1.5}
+      .pf-sub b{color:var(--text)}
+      .pf-flow{display:flex;align-items:center;justify-content:center;margin-top:46px}
+      .pf-node{display:flex;flex-direction:column;align-items:center;gap:14px;width:236px}
+      .pf-card{width:216px;height:154px;border-radius:15px;background:var(--bg-elev);border:1px solid rgba(255,255,255,.08);box-shadow:0 22px 46px -24px rgba(0,0,0,.75);overflow:hidden;display:flex;flex-direction:column}
+      .pf-bar{height:31px;background:var(--code-bg);display:flex;align-items:center;gap:6px;padding:0 11px}
+      .pf-bar .d{width:8px;height:8px;border-radius:50%}
+      .pf-url{margin-left:6px;font-family:var(--mono);font-size:10.5px;color:var(--text-soft);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+      .pf-body{flex:1;padding:12px 14px;display:flex;flex-direction:column;gap:8px;justify-content:center}
+      .pf-h1{height:11px;border-radius:4px;background:rgba(255,255,255,.16);width:82%}
+      .pf-ln{height:7px;border-radius:4px;background:rgba(255,255,255,.09)}
+      .pf-cta{height:20px;width:56%;border-radius:6px;background:rgba(217,119,87,.4);margin-top:3px}
+      .pf-claude{width:150px;height:150px;border-radius:24px;background:#fff;display:grid;place-items:center;box-shadow:0 22px 52px -20px rgba(217,119,87,.5);animation:pfpulse 2.6s ease-in-out infinite}
+      .pf-claude img{width:80px;height:80px}
+      @keyframes pfpulse{0%,100%{box-shadow:0 22px 52px -24px rgba(217,119,87,.32)}50%{box-shadow:0 22px 64px -14px rgba(217,119,87,.7)}}
+      .pf-out{width:216px;height:154px;border-radius:15px;background:linear-gradient(158deg,#2b211c,#232323);border:1px solid rgba(217,119,87,.24);padding:13px 16px;display:flex;flex-direction:column;gap:6px;justify-content:center}
+      .pf-out .o{display:flex;align-items:center;gap:9px;font-size:12px;color:var(--text-soft);font-weight:600}
+      .pf-out .o .n{font-family:var(--mono);font-size:9.5px;color:var(--orange);font-weight:700;width:14px}
+      .pf-label{font-size:13.5px;color:var(--text-dim);font-weight:600}
+      .pf-conn{width:92px;height:2px;background:rgba(255,255,255,.13);position:relative;margin:0 -4px;margin-bottom:32px}
+      .pf-conn::before{content:"";position:absolute;top:-3.5px;left:0;width:9px;height:9px;border-radius:50%;background:var(--orange);box-shadow:0 0 12px 2px rgba(217,119,87,.6);animation:pfrun 2.2s linear infinite}
+      .pf-conn.d2::before{animation-delay:1.1s}
+      @keyframes pfrun{0%{left:0;opacity:0}12%{opacity:1}88%{opacity:1}100%{left:84px;opacity:0}}
+      .pf-step{font-family:var(--mono);font-size:12px;color:var(--orange);font-weight:700;margin-bottom:2px}
+    </style>
+    <div class="kicker" style="color:var(--orange);text-align:center">01 · Positioning · the process</div>
+    <h2 style="margin-top:8px;text-align:center">Page → read → the items</h2>
+    <p class="pf-sub">Same method as always: point Claude at the URL, it <b>reads the live page</b> and fills the <b>same set of items</b> — grounded in Porter's copy banks.</p>
+    <div class="pf-flow">
+      <div class="pf-node">
+        <div class="pf-step">1 · the page</div>
+        <div class="pf-card">
+          <div class="pf-bar"><span class="d" style="background:#ff5f57"></span><span class="d" style="background:#febc2e"></span><span class="d" style="background:#28c840"></span><span class="pf-url">buffer.com</span></div>
+          <div class="pf-body">
+            <div class="pf-h1"></div>
+            <div class="pf-ln" style="width:64%"></div>
+            <div class="pf-cta"></div>
+          </div>
+        </div>
+        <div class="pf-label">The live homepage</div>
+      </div>
+      <div class="pf-conn"></div>
+      <div class="pf-node">
+        <div class="pf-step">2 · read</div>
+        <div class="pf-claude"><img src="_shared/logos/claude-code.svg" alt="Claude"></div>
+        <div class="pf-label">Claude reads it</div>
+      </div>
+      <div class="pf-conn d2"></div>
+      <div class="pf-node">
+        <div class="pf-step">3 · the items</div>
+        <div class="pf-out">
+          <div class="o"><span class="n">01</span> Category claim</div>
+          <div class="o"><span class="n">02</span> Competes against</div>
+          <div class="o"><span class="n">03</span> Audience</div>
+          <div class="o"><span class="n">04</span> Awareness path</div>
+          <div class="o"><span class="n">05</span> Goal</div>
+          <div class="o"><span class="n">06</span> Value read</div>
+        </div>
+        <div class="pf-label">The same items, every page</div>
+      </div>
+    </div>
+    <div class="foot"><span><span class="spark">✻</span> How we do competitor research with Claude</span><span>x</span></div>
+  </section>
+
+  <!-- 3 · THE ANALYSIS · the teardown, applied to Buffer -->
+  <section class="slide pad" data-layout="Buffer, through the framework" style="justify-content:center">
+    <style>
+      .fw-sub{font-size:16px;color:var(--text-soft);text-align:center;max-width:80ch;margin:11px auto 0;line-height:1.5}
+      .fw-sub b{color:var(--text)}
+      .fw-legend{display:flex;gap:20px;justify-content:center;margin:12px auto 0;font-size:12px;color:var(--text-dim)}
+      .fw-legend span{display:inline-flex;align-items:center;gap:7px}
+      .fw-legend i{width:11px;height:11px;border-radius:3px;display:inline-block}
+      .fw-table{width:100%;max-width:1190px;margin:12px auto 0}
+      .fw-row{display:flex;gap:18px;align-items:center;padding:8px 10px;border-top:1px solid rgba(255,255,255,.07)}
+      .fw-row:last-child{border-bottom:1px solid rgba(255,255,255,.07)}
+      .fw-row.star{background:linear-gradient(90deg,rgba(217,119,87,.07),transparent);border-left:2.5px solid var(--orange)}
+      .fw-left{width:214px;flex:none;display:flex;align-items:center;gap:11px}
+      .fw-ic{width:33px;height:33px;flex:none;border-radius:10px;background:rgba(217,119,87,.13);display:grid;place-items:center}
+      .fw-ic svg{width:18px;height:18px;stroke:var(--orange);fill:none;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+      .fw-lt .n{font-family:var(--mono);font-size:10.5px;color:var(--orange);font-weight:700}
+      .fw-lt h3{font-size:14.5px;color:var(--text);font-weight:750;margin:1px 0 1px}
+      .fw-lt p{font-size:11.5px;color:var(--text-dim);margin:0;line-height:1.3}
+      .fw-chips{display:flex;flex-wrap:wrap;gap:8px}
+      .fw-chip{font-family:var(--mono);font-size:12px;color:var(--text-soft);background:var(--bg-elev);border:1px solid rgba(255,255,255,.09);border-radius:7px;padding:5px 10px;white-space:nowrap}
+      .fw-chip b{color:var(--text);font-weight:700}
+      .fw-tag{font-size:9.5px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:var(--text-dim);border:1px solid rgba(255,255,255,.14);border-radius:20px;padding:2px 8px;margin-left:8px}
+      .fw-tag.star{color:var(--orange);border-color:rgba(217,119,87,.45)}
+      .vr-ok{color:#33d17a;font-weight:800}
+      .vr-mid{color:#e0a83b;font-weight:800}
+      .vr-bad{color:#ff6b6b;font-weight:800}
+      .fw-punch{text-align:center;color:var(--text);font-size:16px;margin-top:22px;font-weight:600}
+      .fw-punch b{color:var(--orange)}
+    </style>
+    <div class="kicker" style="color:var(--orange);text-align:center">01 · Positioning · the analysis</div>
+    <h2 style="margin-top:6px;text-align:center">Buffer, through the framework</h2>
+    <p class="fw-sub">The items — filled with <b>what's actually on the page</b>, classified with Porter's copy banks.</p>
+    <div class="fw-legend"><span><i style="background:rgba(217,119,87,.6)"></i>read off the page</span><span><i style="background:rgba(255,255,255,.18)"></i>the value read · does it work?</span></div>
+
+    <div class="fw-table">
+
+      <div class="fw-row">
+        <div class="fw-left">
+          <div class="fw-ic"><svg viewBox="0 0 24 24"><path d="M12 2 4 6v6c0 5 3.5 8 8 10 4.5-2 8-5 8-10V6l-8-4z"/></svg></div>
+          <div class="fw-lt"><div class="n">01</div><h3>Category claim</h3><p>the space it owns</p></div>
+        </div>
+        <div class="fw-chips">
+          <span class="fw-chip"><b>"social media workspace"</b></span><span class="fw-chip">load-bearing word · <b>workspace</b></span><span class="fw-chip">not "a scheduler"</span>
+        </div>
+      </div>
+
+      <div class="fw-row">
+        <div class="fw-left">
+          <div class="fw-ic"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><circle cx="12" cy="12" r="3.5"/><path d="M12 1.5v4"/><path d="M12 18.5v4"/></svg></div>
+          <div class="fw-lt"><div class="n">02</div><h3>Competes against</h3><p>the alternative it names</p></div>
+        </div>
+        <div class="fw-chips">
+          <span class="fw-chip">single-function schedulers</span><span class="fw-chip">manual posting</span><span class="fw-chip" style="border-style:dashed;color:var(--text-dim)">no named rival on page</span>
+        </div>
+      </div>
+
+      <div class="fw-row">
+        <div class="fw-left">
+          <div class="fw-ic"><svg viewBox="0 0 24 24"><circle cx="9" cy="8" r="3.2"/><path d="M3.5 19c0-3 2.5-5 5.5-5s5.5 2 5.5 5"/><circle cx="17" cy="8.5" r="2.4"/><path d="M15.5 14.2c2.6.2 4.5 2.1 4.5 4.8"/></svg></div>
+          <div class="fw-lt"><div class="n">03</div><h3>Audience</h3><p>one, or layered?</p></div>
+        </div>
+        <div class="fw-chips">
+          <span class="fw-chip"><b>one persona</b> · creator / operator</span><span class="fw-chip">tabs Creators / SMB / Agencies = surface</span>
+        </div>
+      </div>
+
+      <div class="fw-row">
+        <div class="fw-left">
+          <div class="fw-ic"><svg viewBox="0 0 24 24"><path d="M3 12h4l3-8 4 16 3-8h4"/></svg></div>
+          <div class="fw-lt"><div class="n">04</div><h3>Awareness path</h3><p>where it starts</p></div>
+        </div>
+        <div class="fw-chips">
+          <span class="fw-chip">Solution → Product → Most-aware</span><span class="fw-chip">skips <b>Unaware + Problem-aware</b></span><span class="fw-chip">zero problem-education</span>
+        </div>
+      </div>
+
+      <div class="fw-row">
+        <div class="fw-left">
+          <div class="fw-ic"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M8 12l2.5 2.5L16 9"/></svg></div>
+          <div class="fw-lt"><div class="n">05</div><h3>Goal</h3><p>the one action</p></div>
+        </div>
+        <div class="fw-chips">
+          <span class="fw-chip">free email signup</span><span class="fw-chip">product-led · no sales motion</span><span class="fw-chip">"Get started for free" ×2</span>
+        </div>
+      </div>
+
+      <div class="fw-row star">
+        <div class="fw-left">
+          <div class="fw-ic"><svg viewBox="0 0 24 24"><path d="M2 12s4-7 10-7 10 7 10 7-4 7-10 7-10-7-10-7z"/><circle cx="12" cy="12" r="3"/></svg></div>
+          <div class="fw-lt"><div class="n">06</div><h3>Value read <span class="fw-tag star" style="white-space:nowrap">verdict</span></h3><p>the 6-layer verdict</p></div>
+        </div>
+        <div class="fw-chips">
+          <span class="fw-chip">Clarity <span class="vr-ok">✓</span></span><span class="fw-chip">Relevance <span class="vr-ok">✓</span></span><span class="fw-chip">Value <span class="vr-mid">~</span></span><span class="fw-chip" style="border-color:rgba(255,107,107,.5)">★ Differentiation <span class="vr-bad">✗ weak</span></span><span class="fw-chip">Completeness <span class="vr-mid">~</span></span><span class="fw-chip">Conversion <span class="vr-ok">✓</span></span>
+        </div>
+      </div>
+
+    </div>
+    <p class="fw-punch">Buffer converts beautifully — but never says <b>why Buffer over Hootsuite</b>. It claims a category; it never defends it.</p>
+    <div class="foot"><span><span class="spark">✻</span> How we do competitor research with Claude</span><span>x</span></div>
+  </section>
+
+  <!-- SECTION COVER -->
+  <section class="slide pad divider" data-layout="Messaging">
+    <div class="kicker" style="color:var(--orange)">02 · Strategic levers</div>
+    <h2>Messaging</h2>
+    <p class="lead" style="margin-top:14px;max-width:60ch">The 2–3 claims a competitor repeats across the page — and whether they back them. Same <b style="color:var(--text)">Buffer</b> teardown, read for the words.</p>
+  </section>
+
+  <!-- 1 · THE WORDS ON THE PAGE (claims board) -->
+  <section class="slide pad" data-layout="The claims on the page" style="justify-content:center">
+    <style>
+      .cb-sub{font-size:17px;color:var(--text-soft);text-align:center;max-width:72ch;margin:12px auto 0;line-height:1.5}
+      .cb-sub b{color:var(--text)}
+      .cb-grid{display:flex;gap:20px;justify-content:center;margin:42px auto 0;width:100%;max-width:1140px;align-items:stretch}
+      .cb-card{flex:1;background:var(--bg-elev);border:1px solid rgba(255,255,255,.08);border-radius:16px;padding:24px 22px 20px;display:flex;flex-direction:column;gap:13px;box-shadow:0 18px 40px -24px rgba(0,0,0,.7)}
+      .cb-tag{font-size:11px;font-weight:800;letter-spacing:.09em;text-transform:uppercase;color:var(--orange)}
+      .cb-q{font-size:19px;color:var(--text);font-weight:650;line-height:1.32}
+      .cb-q .qm{color:var(--orange);font-weight:800}
+      .cb-sec{font-size:13px;color:var(--text-dim);line-height:1.45;border-top:1px solid rgba(255,255,255,.08);padding-top:12px;margin-top:auto;font-style:italic}
+    </style>
+    <div class="kicker" style="color:var(--orange);text-align:center">02 · Messaging · the words on the page</div>
+    <h2 style="margin-top:8px;text-align:center">Three claims, repeated everywhere</h2>
+    <p class="cb-sub">Messaging is what they say <b>again and again</b>. Buffer leans on three — pulled verbatim off the page.</p>
+    <div class="cb-grid">
+      <div class="cb-card">
+        <div class="cb-tag">Completeness</div>
+        <div class="cb-q"><span class="qm">“</span>The most complete set of publishing integrations, ever.<span class="qm">”</span></div>
+        <div class="cb-sec">“Connected to every platform and tool you use.”</div>
+      </div>
+      <div class="cb-card">
+        <div class="cb-tag">Universality</div>
+        <div class="cb-q"><span class="qm">“</span>For everyone.<span class="qm">”</span></div>
+        <div class="cb-sec">“Whoever you are, we've got you covered.”</div>
+      </div>
+      <div class="cb-card">
+        <div class="cb-tag">Transparency · humanity</div>
+        <div class="cb-q"><span class="qm">“</span>We are an open company.<span class="qm">”</span></div>
+        <div class="cb-sec">“No bots, just real people who care.”</div>
+      </div>
+    </div>
+    <div class="foot"><span><span class="spark">✻</span> How we do competitor research with Claude</span><span>x</span></div>
+  </section>
+
+  <!-- 2 · THE PROCESS · page -> read -> items -->
+  <section class="slide pad" data-layout="Page → read → the items" style="justify-content:center">
+    <style>
+      .pf-sub{font-size:17px;color:var(--text-soft);text-align:center;max-width:70ch;margin:12px auto 0;line-height:1.5}
+      .pf-sub b{color:var(--text)}
+      .pf-flow{display:flex;align-items:center;justify-content:center;margin-top:46px}
+      .pf-node{display:flex;flex-direction:column;align-items:center;gap:14px;width:236px}
+      .pf-card{width:216px;height:154px;border-radius:15px;background:var(--bg-elev);border:1px solid rgba(255,255,255,.08);box-shadow:0 22px 46px -24px rgba(0,0,0,.75);overflow:hidden;display:flex;flex-direction:column}
+      .pf-bar{height:31px;background:var(--code-bg);display:flex;align-items:center;gap:6px;padding:0 11px}
+      .pf-bar .d{width:8px;height:8px;border-radius:50%}
+      .pf-url{margin-left:6px;font-family:var(--mono);font-size:10.5px;color:var(--text-soft);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+      .pf-body{flex:1;padding:12px 14px;display:flex;flex-direction:column;gap:8px;justify-content:center}
+      .pf-q{height:8px;border-radius:4px;background:rgba(255,255,255,.13)}
+      .pf-claude{width:150px;height:150px;border-radius:24px;background:#fff;display:grid;place-items:center;box-shadow:0 22px 52px -20px rgba(217,119,87,.5);animation:pfpulse 2.6s ease-in-out infinite}
+      .pf-claude img{width:80px;height:80px}
+      @keyframes pfpulse{0%,100%{box-shadow:0 22px 52px -24px rgba(217,119,87,.32)}50%{box-shadow:0 22px 64px -14px rgba(217,119,87,.7)}}
+      .pf-out{width:216px;height:154px;border-radius:15px;background:linear-gradient(158deg,#2b211c,#232323);border:1px solid rgba(217,119,87,.24);padding:13px 16px;display:flex;flex-direction:column;gap:6px;justify-content:center}
+      .pf-out .o{display:flex;align-items:center;gap:9px;font-size:12px;color:var(--text-soft);font-weight:600}
+      .pf-out .o .n{font-family:var(--mono);font-size:9.5px;color:var(--orange);font-weight:700;width:14px}
+      .pf-label{font-size:13.5px;color:var(--text-dim);font-weight:600}
+      .pf-conn{width:92px;height:2px;background:rgba(255,255,255,.13);position:relative;margin:0 -4px;margin-bottom:32px}
+      .pf-conn::before{content:"";position:absolute;top:-3.5px;left:0;width:9px;height:9px;border-radius:50%;background:var(--orange);box-shadow:0 0 12px 2px rgba(217,119,87,.6);animation:pfrun 2.2s linear infinite}
+      .pf-conn.d2::before{animation-delay:1.1s}
+      @keyframes pfrun{0%{left:0;opacity:0}12%{opacity:1}88%{opacity:1}100%{left:84px;opacity:0}}
+      .pf-step{font-family:var(--mono);font-size:12px;color:var(--orange);font-weight:700;margin-bottom:2px}
+    </style>
+    <div class="kicker" style="color:var(--orange);text-align:center">02 · Messaging · the process</div>
+    <h2 style="margin-top:8px;text-align:center">Page → read → the items</h2>
+    <p class="pf-sub">Same method: Claude <b>reads the live copy</b> and names each move with Porter's banks — the figures, the triggers, the angle.</p>
+    <div class="pf-flow">
+      <div class="pf-node">
+        <div class="pf-step">1 · the page</div>
+        <div class="pf-card">
+          <div class="pf-bar"><span class="d" style="background:#ff5f57"></span><span class="d" style="background:#febc2e"></span><span class="d" style="background:#28c840"></span><span class="pf-url">buffer.com</span></div>
+          <div class="pf-body">
+            <div class="pf-q" style="width:88%"></div>
+            <div class="pf-q" style="width:70%"></div>
+            <div class="pf-q" style="width:80%"></div>
+            <div class="pf-q" style="width:58%"></div>
+          </div>
+        </div>
+        <div class="pf-label">The live copy</div>
+      </div>
+      <div class="pf-conn"></div>
+      <div class="pf-node">
+        <div class="pf-step">2 · read</div>
+        <div class="pf-claude"><img src="_shared/logos/claude-code.svg" alt="Claude"></div>
+        <div class="pf-label">Claude reads it</div>
+      </div>
+      <div class="pf-conn d2"></div>
+      <div class="pf-node">
+        <div class="pf-step">3 · the items</div>
+        <div class="pf-out">
+          <div class="o"><span class="n">01</span> The claims</div>
+          <div class="o"><span class="n">02</span> Concept &amp; hook</div>
+          <div class="o"><span class="n">03</span> Angle</div>
+          <div class="o"><span class="n">04</span> Rhetorical figures</div>
+          <div class="o"><span class="n">05</span> Triggers</div>
+          <div class="o"><span class="n">06</span> Value read</div>
+        </div>
+        <div class="pf-label">The same items, every page</div>
+      </div>
+    </div>
+    <div class="foot"><span><span class="spark">✻</span> How we do competitor research with Claude</span><span>x</span></div>
+  </section>
+
+  <!-- 3 · THE ANALYSIS · the teardown, applied to Buffer -->
+  <section class="slide pad" data-layout="Buffer, through the framework" style="justify-content:center">
+    <style>
+      .fw-sub{font-size:16px;color:var(--text-soft);text-align:center;max-width:80ch;margin:11px auto 0;line-height:1.5}
+      .fw-sub b{color:var(--text)}
+      .fw-legend{display:flex;gap:20px;justify-content:center;margin:12px auto 0;font-size:12px;color:var(--text-dim)}
+      .fw-legend span{display:inline-flex;align-items:center;gap:7px}
+      .fw-legend i{width:11px;height:11px;border-radius:3px;display:inline-block}
+      .fw-table{width:100%;max-width:1190px;margin:12px auto 0}
+      .fw-row{display:flex;gap:18px;align-items:center;padding:8px 10px;border-top:1px solid rgba(255,255,255,.07)}
+      .fw-row:last-child{border-bottom:1px solid rgba(255,255,255,.07)}
+      .fw-row.star{background:linear-gradient(90deg,rgba(217,119,87,.07),transparent);border-left:2.5px solid var(--orange)}
+      .fw-left{width:214px;flex:none;display:flex;align-items:center;gap:11px}
+      .fw-ic{width:33px;height:33px;flex:none;border-radius:10px;background:rgba(217,119,87,.13);display:grid;place-items:center}
+      .fw-ic svg{width:18px;height:18px;stroke:var(--orange);fill:none;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+      .fw-lt .n{font-family:var(--mono);font-size:10.5px;color:var(--orange);font-weight:700}
+      .fw-lt h3{font-size:14.5px;color:var(--text);font-weight:750;margin:1px 0 1px}
+      .fw-lt p{font-size:11.5px;color:var(--text-dim);margin:0;line-height:1.3}
+      .fw-chips{display:flex;flex-wrap:wrap;gap:8px}
+      .fw-chip{font-family:var(--mono);font-size:12px;color:var(--text-soft);background:var(--bg-elev);border:1px solid rgba(255,255,255,.09);border-radius:7px;padding:5px 10px;white-space:nowrap}
+      .fw-chip b{color:var(--text);font-weight:700}
+      .fw-tag{font-size:9.5px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:var(--text-dim);border:1px solid rgba(255,255,255,.14);border-radius:20px;padding:2px 8px;margin-left:8px}
+      .fw-tag.star{color:var(--orange);border-color:rgba(217,119,87,.45)}
+      .vr-ok{color:#33d17a;font-weight:800}
+      .vr-bad{color:#ff6b6b;font-weight:800}
+      .fw-punch{text-align:center;color:var(--text);font-size:16px;margin-top:22px;font-weight:600}
+      .fw-punch b{color:var(--orange)}
+    </style>
+    <div class="kicker" style="color:var(--orange);text-align:center">02 · Messaging · the analysis</div>
+    <h2 style="margin-top:6px;text-align:center">Buffer, through the framework</h2>
+    <p class="fw-sub">Each move named with a real bank entry — the figure, the trigger, the angle. Never an invented label.</p>
+    <div class="fw-legend"><span><i style="background:rgba(217,119,87,.6)"></i>read off the page</span><span><i style="background:rgba(255,255,255,.18)"></i>the value read · does it hold up?</span></div>
+
+    <div class="fw-table">
+
+      <div class="fw-row">
+        <div class="fw-left">
+          <div class="fw-ic"><svg viewBox="0 0 24 24"><path d="M4 5h16v11H9l-4 3v-3H4z"/><path d="M8 9h8"/><path d="M8 12.5h5"/></svg></div>
+          <div class="fw-lt"><div class="n">01</div><h3>The claims</h3><p>what repeats</p></div>
+        </div>
+        <div class="fw-chips">
+          <span class="fw-chip">completeness · <b>"complete… ever"</b></span><span class="fw-chip">universality · <b>"for everyone"</b></span><span class="fw-chip">transparency · <b>"no bots"</b></span>
+        </div>
+      </div>
+
+      <div class="fw-row">
+        <div class="fw-left">
+          <div class="fw-ic"><svg viewBox="0 0 24 24"><path d="M12 3a6 6 0 0 0-4 10.5c.8.8 1 1.5 1 2.5h6c0-1 .2-1.7 1-2.5A6 6 0 0 0 12 3z"/><path d="M9 21h6"/></svg></div>
+          <div class="fw-lt"><div class="n">02</div><h3>Concept &amp; hook</h3><p>the one big idea</p></div>
+        </div>
+        <div class="fw-chips">
+          <span class="fw-chip">concept · <b>"run all your social from one place"</b></span><span class="fw-chip">hook · identity · "your social media workspace"</span>
+        </div>
+      </div>
+
+      <div class="fw-row">
+        <div class="fw-left">
+          <div class="fw-ic"><svg viewBox="0 0 24 24"><path d="M3 12h13"/><path d="M12 7l5 5-5 5"/><path d="M20 5v14"/></svg></div>
+          <div class="fw-lt"><div class="n">03</div><h3>Angle</h3><p>how it's told</p></div>
+        </div>
+        <div class="fw-chips">
+          <span class="fw-chip">before/after · <b>zero → one → one million</b></span><span class="fw-chip">over a feature listicle</span><span class="fw-chip">aspirational, not pain-relief</span>
+        </div>
+      </div>
+
+      <div class="fw-row">
+        <div class="fw-left">
+          <div class="fw-ic"><svg viewBox="0 0 24 24"><path d="M6 4h12"/><path d="M12 4v16"/><path d="M9 20h6"/></svg></div>
+          <div class="fw-lt"><div class="n">04</div><h3>Rhetorical figures</h3><p>named from the bank</p></div>
+        </div>
+        <div class="fw-chips">
+          <span class="fw-chip">Gradatio</span><span class="fw-chip">Tricolon</span><span class="fw-chip">Correctio <b>· "not just X"</b> (gastado)</span><span class="fw-chip">Hipérbole · "10x"</span>
+        </div>
+      </div>
+
+      <div class="fw-row">
+        <div class="fw-left">
+          <div class="fw-ic"><svg viewBox="0 0 24 24"><path d="M13 2 4 14h7l-1 8 9-12h-7l1-8z"/></svg></div>
+          <div class="fw-lt"><div class="n">05</div><h3>Triggers</h3><p>the levers leaned on</p></div>
+        </div>
+        <div class="fw-chips">
+          <span class="fw-chip"><b>social proof</b> (dominant)</span><span class="fw-chip">authority · transparency</span><span class="fw-chip">reciprocity</span><span class="fw-chip">commitment</span><span class="fw-chip">unity</span>
+        </div>
+      </div>
+
+      <div class="fw-row star">
+        <div class="fw-left">
+          <div class="fw-ic"><svg viewBox="0 0 24 24"><path d="M2 12s4-7 10-7 10 7 10 7-4 7-10 7-10-7-10-7z"/><circle cx="12" cy="12" r="3"/></svg></div>
+          <div class="fw-lt"><div class="n">06</div><h3>Value read <span class="fw-tag star" style="white-space:nowrap">holds up?</span></h3><p>claim vs proof</p></div>
+        </div>
+        <div class="fw-chips">
+          <span class="fw-chip" style="border-color:rgba(255,107,107,.5)">★ evidence-per-claim <span class="vr-bad">✗</span></span><span class="fw-chip">present-tense <span class="vr-bad">✗</span> ("will help")</span><span class="fw-chip">one-term-one-thing <span class="vr-ok">✓</span></span>
+        </div>
+      </div>
+
+    </div>
+    <p class="fw-punch">Bold and human — but <b>"most complete… ever"</b> and <b>"10x"</b> carry no proof. Confidence without evidence.</p>
+    <div class="foot"><span><span class="spark">✻</span> How we do competitor research with Claude</span><span>x</span></div>
+  </section>
+
+  <!-- SECTION COVER -->
+  <section class="slide pad divider" data-layout="Pricing">
+    <div class="kicker" style="color:var(--orange)">03 · Strategic levers</div>
+    <h2>Pricing</h2>
+    <p class="lead" style="margin-top:14px;max-width:60ch">What a competitor's pricing page reveals — read live with Claude, using <b style="color:var(--text)">ClickUp</b> as our worked example.</p>
+  </section>
+
+  <!-- 1 · THE REAL PAGE (screenshot) -->
+  <section class="slide pad" data-layout="Start with the real page" style="justify-content:center">
+    <style>
+      .sh-sub{font-size:17px;color:var(--text-soft);text-align:center;max-width:70ch;margin:12px auto 0;line-height:1.5}
+      .sh-sub b{color:var(--text)}
+      .sh-win{width:900px;max-width:100%;margin:28px auto 0;border-radius:14px;overflow:hidden;border:1px solid rgba(255,255,255,.12);box-shadow:0 34px 80px -34px rgba(0,0,0,.85)}
+      .sh-bar{height:38px;background:#2b2b2b;display:flex;align-items:center;gap:8px;padding:0 14px}
+      .sh-bar .d{width:11px;height:11px;border-radius:50%}
+      .sh-url{margin:0 auto;font-family:var(--mono);font-size:12px;color:var(--text-soft);background:rgba(255,255,255,.08);padding:5px 16px;border-radius:7px}
+      .sh-win img{display:block;width:100%;height:auto}
+    </style>
+    <div class="kicker" style="color:var(--orange);text-align:center">03 · Pricing · the page we analyze</div>
+    <h2 style="margin-top:8px;text-align:center">Start with the real page</h2>
+    <p class="sh-sub">No rebuild, no guessing — Claude reads exactly what's <b>live</b> at their pricing URL.</p>
+    <div class="sh-win">
+      <div class="sh-bar"><span class="d" style="background:#ff5f57"></span><span class="d" style="background:#febc2e"></span><span class="d" style="background:#28c840"></span><span class="sh-url">clickup.com/pricing</span></div>
+      <img src="03-pricing/assets/clickup-pricing.png" alt="ClickUp pricing page">
+    </div>
+    <div class="foot"><span><span class="spark">✻</span> How we do competitor research with Claude</span><span>x</span></div>
+  </section>
+
+  <!-- 2 · THE PROCESS · page -> read -> items -->
+  <section class="slide pad" data-layout="Page → read → the items" style="justify-content:center">
+    <style>
+      .pf-sub{font-size:17px;color:var(--text-soft);text-align:center;max-width:70ch;margin:12px auto 0;line-height:1.5}
+      .pf-sub b{color:var(--text)}
+      .pf-flow{display:flex;align-items:center;justify-content:center;margin-top:46px}
+      .pf-node{display:flex;flex-direction:column;align-items:center;gap:14px;width:236px}
+      .pf-card{width:216px;height:154px;border-radius:15px;background:var(--bg-elev);border:1px solid rgba(255,255,255,.08);box-shadow:0 22px 46px -24px rgba(0,0,0,.75);overflow:hidden;display:flex;flex-direction:column}
+      .pf-bar{height:31px;background:var(--code-bg);display:flex;align-items:center;gap:6px;padding:0 11px}
+      .pf-bar .d{width:8px;height:8px;border-radius:50%}
+      .pf-url{margin-left:6px;font-family:var(--mono);font-size:10.5px;color:var(--text-soft);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+      .pf-body{flex:1;padding:13px 14px;display:flex;flex-direction:column;gap:9px;justify-content:center}
+      .pf-pr{display:flex;justify-content:space-between;align-items:center}
+      .pf-pr .l{height:7px;border-radius:4px;background:rgba(255,255,255,.10)}
+      .pf-pr .p{font-family:var(--mono);font-size:11px;color:var(--text-dim)}
+      .pf-claude{width:150px;height:150px;border-radius:24px;background:#fff;display:grid;place-items:center;box-shadow:0 22px 52px -20px rgba(217,119,87,.5);animation:pfpulse 2.6s ease-in-out infinite}
+      .pf-claude img{width:80px;height:80px}
+      @keyframes pfpulse{0%,100%{box-shadow:0 22px 52px -24px rgba(217,119,87,.32)}50%{box-shadow:0 22px 64px -14px rgba(217,119,87,.7)}}
+      .pf-out{width:216px;height:154px;border-radius:15px;background:linear-gradient(158deg,#2b211c,#232323);border:1px solid rgba(217,119,87,.24);padding:14px 16px;display:flex;flex-direction:column;gap:7px;justify-content:center}
+      .pf-out .o{display:flex;align-items:center;gap:9px;font-size:12.5px;color:var(--text-soft);font-weight:600}
+      .pf-out .o .n{font-family:var(--mono);font-size:10px;color:var(--orange);font-weight:700;width:14px}
+      .pf-label{font-size:13.5px;color:var(--text-dim);font-weight:600}
+      .pf-conn{width:92px;height:2px;background:rgba(255,255,255,.13);position:relative;margin:0 -4px;margin-bottom:32px}
+      .pf-conn::before{content:"";position:absolute;top:-3.5px;left:0;width:9px;height:9px;border-radius:50%;background:var(--orange);box-shadow:0 0 12px 2px rgba(217,119,87,.6);animation:pfrun 2.2s linear infinite}
+      .pf-conn.d2::before{animation-delay:1.1s}
+      @keyframes pfrun{0%{left:0;opacity:0}12%{opacity:1}88%{opacity:1}100%{left:84px;opacity:0}}
+      .pf-step{font-family:var(--mono);font-size:12px;color:var(--orange);font-weight:700;margin-bottom:2px}
+    </style>
+    <div class="kicker" style="color:var(--orange);text-align:center">03 · Pricing · the process</div>
+    <h2 style="margin-top:8px;text-align:center">Page → read → the items</h2>
+    <p class="pf-sub">Point Claude at the URL. It <b>reads the live page</b>, then fills the <b>same set of items</b> every time — so the read is objective.</p>
+    <div class="pf-flow">
+      <div class="pf-node">
+        <div class="pf-step">1 · the page</div>
+        <div class="pf-card">
+          <div class="pf-bar"><span class="d" style="background:#ff5f57"></span><span class="d" style="background:#febc2e"></span><span class="d" style="background:#28c840"></span><span class="pf-url">clickup.com/pricing</span></div>
+          <div class="pf-body">
+            <div class="pf-pr"><span class="l" style="width:44%"></span><span class="p">Free</span></div>
+            <div class="pf-pr"><span class="l" style="width:52%"></span><span class="p">$7</span></div>
+            <div class="pf-pr"><span class="l" style="width:48%"></span><span class="p">$12</span></div>
+            <div class="pf-pr"><span class="l" style="width:56%"></span><span class="p">Sales</span></div>
+          </div>
+        </div>
+        <div class="pf-label">The live pricing page</div>
+      </div>
+      <div class="pf-conn"></div>
+      <div class="pf-node">
+        <div class="pf-step">2 · read</div>
+        <div class="pf-claude"><img src="_shared/logos/claude-code.svg" alt="Claude"></div>
+        <div class="pf-label">Claude reads it</div>
+      </div>
+      <div class="pf-conn d2"></div>
+      <div class="pf-node">
+        <div class="pf-step">3 · the items</div>
+        <div class="pf-out">
+          <div class="o"><span class="n">01</span> Packages</div>
+          <div class="o"><span class="n">02</span> Price</div>
+          <div class="o"><span class="n">03</span> Monetization</div>
+          <div class="o"><span class="n">04</span> User types</div>
+          <div class="o"><span class="n">05</span> Policies</div>
+          <div class="o"><span class="n">06</span> Framing</div>
+        </div>
+        <div class="pf-label">The same items, every page</div>
+      </div>
+    </div>
+    <div class="foot"><span><span class="spark">✻</span> How we do competitor research with Claude</span><span>x</span></div>
+  </section>
+
+  <!-- 3 · THE ANALYSIS · the framework, applied to ClickUp -->
+  <section class="slide pad" data-layout="ClickUp, through the framework" style="justify-content:center">
+    <style>
+      .fw-sub{font-size:16px;color:var(--text-soft);text-align:center;max-width:80ch;margin:11px auto 0;line-height:1.5}
+      .fw-sub b{color:var(--text)}
+      .fw-legend{display:flex;gap:20px;justify-content:center;margin:12px auto 0;font-size:12px;color:var(--text-dim)}
+      .fw-legend span{display:inline-flex;align-items:center;gap:7px}
+      .fw-legend i{width:11px;height:11px;border-radius:3px;display:inline-block}
+      .fw-table{width:100%;max-width:1190px;margin:12px auto 0}
+      .fw-row{display:flex;gap:18px;align-items:center;padding:8px 10px;border-top:1px solid rgba(255,255,255,.07)}
+      .fw-row:last-child{border-bottom:1px solid rgba(255,255,255,.07)}
+      .fw-row.star{background:linear-gradient(90deg,rgba(217,119,87,.07),transparent);border-left:2.5px solid var(--orange)}
+      .fw-left{width:214px;flex:none;display:flex;align-items:center;gap:11px}
+      .fw-ic{width:33px;height:33px;flex:none;border-radius:10px;background:rgba(217,119,87,.13);display:grid;place-items:center}
+      .fw-ic svg{width:18px;height:18px;stroke:var(--orange);fill:none;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+      .fw-lt .n{font-family:var(--mono);font-size:10.5px;color:var(--orange);font-weight:700}
+      .fw-lt h3{font-size:14.5px;color:var(--text);font-weight:750;margin:1px 0 1px}
+      .fw-lt p{font-size:11.5px;color:var(--text-dim);margin:0;line-height:1.3}
+      .fw-chips{display:flex;flex-wrap:wrap;gap:8px}
+      .fw-chip{font-family:var(--mono);font-size:12px;color:var(--text-soft);background:var(--bg-elev);border:1px solid rgba(255,255,255,.09);border-radius:7px;padding:5px 10px;white-space:nowrap}
+      .fw-chip b{color:var(--text);font-weight:700}
+      .fw-row.read .fw-ic{background:rgba(255,255,255,.06)}
+      .fw-row.read .fw-ic svg{stroke:var(--text-dim)}
+      .fw-row.read .fw-lt .n{color:var(--text-dim)}
+      .fw-row.read .fw-chip{border-style:dashed;color:var(--text-dim);background:transparent}
+      .fw-tag{font-size:9.5px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:var(--text-dim);border:1px solid rgba(255,255,255,.14);border-radius:20px;padding:2px 8px;margin-left:8px}
+      .fw-tag.star{color:var(--orange);border-color:rgba(217,119,87,.45)}
+    </style>
+    <div class="kicker" style="color:var(--orange);text-align:center">03 · Pricing · the analysis</div>
+    <h2 style="margin-top:6px;text-align:center">ClickUp, through the framework</h2>
+    <p class="fw-sub">The same six items — filled with <b>what's actually on the page</b>. Captured live, 2026-08-06.</p>
+    <div class="fw-legend"><span><i style="background:rgba(217,119,87,.6)"></i>Lenses 1–5 · facts</span><span><i style="background:rgba(255,255,255,.18)"></i>Lens 6 · the read</span></div>
+
+    <div class="fw-table">
+
+      <div class="fw-row">
+        <div class="fw-left">
+          <div class="fw-ic"><svg viewBox="0 0 24 24"><path d="M12 3 3 8l9 5 9-5-9-5z"/><path d="M3 12l9 5 9-5"/><path d="M3 16l9 5 9-5"/></svg></div>
+          <div class="fw-lt"><div class="n">01</div><h3>Packages</h3><p>how many, and what</p></div>
+        </div>
+        <div class="fw-chips">
+          <span class="fw-chip"><b>4 tiers</b></span><span class="fw-chip">Free → Unlimited → Business → Enterprise</span><span class="fw-chip">free ✓</span><span class="fw-chip">contact-sales ✓</span><span class="fw-chip">Business = "Popular"</span>
+        </div>
+      </div>
+
+      <div class="fw-row">
+        <div class="fw-left">
+          <div class="fw-ic"><svg viewBox="0 0 24 24"><path d="M20 12.6 12.6 20a1.4 1.4 0 0 1-2 0l-6.6-6.6a1.4 1.4 0 0 1-.4-1V4.6A1.6 1.6 0 0 1 5.2 3h4.8a1.4 1.4 0 0 1 1 .4L20 10.6a1.4 1.4 0 0 1 0 2z"/><circle cx="7.6" cy="7.6" r="1.3"/></svg></div>
+          <div class="fw-lt"><div class="n">02</div><h3>Price</h3><p>per seat / month</p></div>
+        </div>
+        <div class="fw-chips">
+          <span class="fw-chip"><b>$0 / $7 / $12 / Sales</b></span><span class="fw-chip">annual <b>−30%</b> vs monthly</span><span class="fw-chip">monthly $0 / $10 / $19 / Sales</span>
+        </div>
+      </div>
+
+      <div class="fw-row star">
+        <div class="fw-left">
+          <div class="fw-ic"><svg viewBox="0 0 24 24"><path d="M4 6h16"/><path d="M4 12h16"/><path d="M4 18h16"/><circle cx="9" cy="6" r="2.2"/><circle cx="15" cy="12" r="2.2"/><circle cx="8" cy="18" r="2.2"/></svg></div>
+          <div class="fw-lt"><div class="n">03</div><h3>Monetization <span class="fw-tag star" style="white-space:nowrap">crux</span></h3><p>what they charge for</p></div>
+        </div>
+        <div class="fw-chips">
+          <span class="fw-chip" style="border-color:rgba(217,119,87,.45)">★ per seat <b>+</b> AI add-on <b>+</b> usage credits</span><span class="fw-chip">staircase · automations <b>100→1K→5K→250K</b></span><span class="fw-chip">add-ons · Brain <b>$9</b> / Everything <b>$28</b></span><span class="fw-chip">usage · <b>$0.001</b>/credit</span>
+        </div>
+      </div>
+
+      <div class="fw-row">
+        <div class="fw-left">
+          <div class="fw-ic"><svg viewBox="0 0 24 24"><circle cx="9" cy="8" r="3.2"/><path d="M3.5 19c0-3 2.5-5 5.5-5s5.5 2 5.5 5"/><circle cx="17" cy="8.5" r="2.4"/><path d="M15.5 14.2c2.6.2 4.5 2.1 4.5 4.8"/></svg></div>
+          <div class="fw-lt"><div class="n">04</div><h3>User types</h3><p>who each tier is for</p></div>
+        </div>
+        <div class="fw-chips">
+          <span class="fw-chip">individual → small → mid → enterprise</span><span class="fw-chip">self-serve → <b>sales at Enterprise</b></span><span class="fw-chip">bottom-up → top-down</span>
+        </div>
+      </div>
+
+      <div class="fw-row">
+        <div class="fw-left">
+          <div class="fw-ic"><svg viewBox="0 0 24 24"><path d="M12 3l7 3v5c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6l7-3z"/><path d="M9 12l2 2 4-4"/></svg></div>
+          <div class="fw-lt"><div class="n">05</div><h3>Policies &amp; friction</h3><p>the fine print</p></div>
+        </div>
+        <div class="fw-chips">
+          <span class="fw-chip"><b>30-day</b> money-back</span><span class="fw-chip">per-Workspace billing</span><span class="fw-chip">Enterprise = contact sales</span><span class="fw-chip">HIPAA · data residency</span><span class="fw-chip">savings calc vs 25 tools · FAQ</span>
+        </div>
+      </div>
+
+      <div class="fw-row read">
+        <div class="fw-left">
+          <div class="fw-ic"><svg viewBox="0 0 24 24"><path d="M2 12s4-7 10-7 10 7 10 7-4 7-10 7-10-7-10-7z"/><circle cx="12" cy="12" r="3"/></svg></div>
+          <div class="fw-lt"><div class="n">06</div><h3>Framing <span class="fw-tag">the read</span></h3><p>anchors &amp; interpretation</p></div>
+        </div>
+        <div class="fw-chips">
+          <span class="fw-chip" style="border-color:rgba(217,119,87,.5);color:var(--text);border-style:solid">★ value anchor · vs your whole 25-tool stack → save <b>$282K/yr</b></span><span class="fw-chip">price anchor · annual-first</span><span class="fw-chip">"$100 / $750 in value"</span><span class="fw-chip">decoy · Business steered</span>
+        </div>
+      </div>
+
+    </div>
+    <div class="foot"><span><span class="spark">✻</span> How we do competitor research with Claude</span><span>x</span></div>
+  </section>
+
+  <!-- SECTION COVER -->
+  <section class="slide pad divider" data-layout="SEO">
+    <div class="kicker" style="color:var(--orange)">04 · Tactics</div>
+    <h2>SEO</h2>
+    <p class="lead" style="margin-top:14px;max-width:62ch">What a competitor publishes — and whether any of it actually ranks. Read live from <b style="color:var(--text)">sitemaps + real rankings</b>, using <b style="color:var(--text)">ClickUp</b> as our worked example.</p>
+  </section>
+
+  <!-- 1 · THE REAL THING · the sitemap (profiled) -->
+  <section class="slide pad" data-layout="Read the sitemap honestly" style="justify-content:center">
+    <style>
+      .sm-sub{font-size:17px;color:var(--text-soft);text-align:center;max-width:74ch;margin:12px auto 0;line-height:1.5}
+      .sm-sub b{color:var(--text)}
+      .sm-term{width:880px;max-width:100%;margin:28px auto 0}
+      .sm-term .body{padding:16px 18px}
+      .sm-row{font-family:var(--mono);font-size:13px;line-height:1.95;color:var(--text-soft);white-space:pre;display:grid;grid-template-columns:130px 118px 128px 1fr;align-items:baseline}
+      .sm-row .u{color:var(--text)}
+      .sm-tag{font-weight:700}
+      .sm-tag.d{color:#33d17a}
+      .sm-tag.r{color:#ff6b6b}
+      .sm-tag.n{color:var(--text-faint)}
+      .sm-sep{border-top:1px dashed rgba(255,255,255,.14);margin:9px 0}
+      .sm-tot{font-family:var(--mono);font-size:13px;color:var(--text);font-weight:600}
+      .sm-cap{text-align:center;color:var(--text-dim);font-size:14px;margin-top:20px}
+      .sm-cap b{color:var(--orange)}
+    </style>
+    <div class="kicker" style="color:var(--orange);text-align:center">04 · SEO · the page we analyze</div>
+    <h2 style="margin-top:8px;text-align:center">Read the sitemap honestly</h2>
+    <p class="sm-sub">A sitemap is the competitor's whole map — but it <b>lies about dates</b>. Profile it with <b>curl + python</b> before you trust a single number.</p>
+    <div class="term sm-term">
+      <div class="bar"><span class="dot red"></span><span class="dot yel"></span><span class="dot grn"></span><span class="title"><span class="spark">✻</span> profile clickup.com/sitemap.xml → 27 sub-sitemaps</span></div>
+      <div class="body">
+        <div class="sm-row"><span class="u">6,088 urls</span><span>6,088 dated</span><span>top-day  4%</span><span class="sm-tag d">[datable]   blog</span></div>
+        <div class="sm-row"><span class="u">1,526 urls</span><span>1,526 dated</span><span>top-day 100%</span><span class="sm-tag r">[REBUILD]   sitemap-next   ← 1 deploy, not 1,526 edits</span></div>
+        <div class="sm-row"><span class="u">1,437 urls</span><span>1,437 dated</span><span>top-day 100%</span><span class="sm-tag r">[REBUILD]   programmatic</span></div>
+        <div class="sm-row"><span class="u">35,132 urls</span><span>0 dated</span><span>top-day  0%</span><span class="sm-tag n">[NO DATE]   blog-programmatic</span></div>
+        <div class="sm-row"><span class="u">6,010 urls</span><span>0 dated</span><span>top-day  0%</span><span class="sm-tag n">[NO DATE]   blog-es · +19 more locales…</span></div>
+        <div class="sm-sep"></div>
+        <div class="sm-tot">27 sitemaps · 160,420 urls · <span style="color:#ff6b6b">2 REBUILD</span> · <span style="color:var(--text-faint)">24 NO-DATE</span> · <span style="color:#33d17a">1 datable</span></div>
+      </div>
+    </div>
+    <p class="sm-cap">The honest signal isn't 160K, or 1,526 — it's the <b>one datable sitemap</b>: the blog.</p>
+    <div class="foot"><span><span class="spark">✻</span> How we do competitor research with Claude</span><span>x</span></div>
+  </section>
+
+  <!-- 2 · THE PROCESS · sitemap -> read -> items -->
+  <section class="slide pad" data-layout="Sitemap → read → the items" style="justify-content:center">
+    <style>
+      .pf-sub{font-size:17px;color:var(--text-soft);text-align:center;max-width:74ch;margin:12px auto 0;line-height:1.5}
+      .pf-sub b{color:var(--text)}
+      .pf-flow{display:flex;align-items:center;justify-content:center;margin-top:46px}
+      .pf-node{display:flex;flex-direction:column;align-items:center;gap:14px;width:236px}
+      .pf-card{width:216px;height:154px;border-radius:15px;background:var(--bg-elev);border:1px solid rgba(255,255,255,.08);box-shadow:0 22px 46px -24px rgba(0,0,0,.75);overflow:hidden;display:flex;flex-direction:column}
+      .pf-bar{height:31px;background:var(--code-bg);display:flex;align-items:center;gap:6px;padding:0 11px}
+      .pf-bar .d{width:8px;height:8px;border-radius:50%}
+      .pf-url{margin-left:6px;font-family:var(--mono);font-size:10.5px;color:var(--text-soft);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+      .pf-body{flex:1;padding:11px 13px;display:flex;flex-direction:column;gap:5px;justify-content:center;font-family:var(--mono);font-size:9.5px;color:var(--text-dim)}
+      .pf-body .xl{color:var(--text-faint)}
+      .pf-claude{width:150px;height:150px;border-radius:24px;background:#fff;display:grid;place-items:center;box-shadow:0 22px 52px -20px rgba(217,119,87,.5);animation:pfpulse 2.6s ease-in-out infinite}
+      .pf-claude img{width:80px;height:80px}
+      @keyframes pfpulse{0%,100%{box-shadow:0 22px 52px -24px rgba(217,119,87,.32)}50%{box-shadow:0 22px 64px -14px rgba(217,119,87,.7)}}
+      .pf-out{width:216px;height:154px;border-radius:15px;background:linear-gradient(158deg,#2b211c,#232323);border:1px solid rgba(217,119,87,.24);padding:13px 16px;display:flex;flex-direction:column;gap:5px;justify-content:center}
+      .pf-out .o{display:flex;align-items:center;gap:9px;font-size:11.5px;color:var(--text-soft);font-weight:600}
+      .pf-out .o .n{font-family:var(--mono);font-size:9.5px;color:var(--orange);font-weight:700;width:14px}
+      .pf-label{font-size:13.5px;color:var(--text-dim);font-weight:600}
+      .pf-conn{width:92px;height:2px;background:rgba(255,255,255,.13);position:relative;margin:0 -4px;margin-bottom:32px}
+      .pf-conn::before{content:"";position:absolute;top:-3.5px;left:0;width:9px;height:9px;border-radius:50%;background:var(--orange);box-shadow:0 0 12px 2px rgba(217,119,87,.6);animation:pfrun 2.2s linear infinite}
+      .pf-conn.d2::before{animation-delay:1.1s}
+      @keyframes pfrun{0%{left:0;opacity:0}12%{opacity:1}88%{opacity:1}100%{left:84px;opacity:0}}
+      .pf-step{font-family:var(--mono);font-size:12px;color:var(--orange);font-weight:700;margin-bottom:2px}
+    </style>
+    <div class="kicker" style="color:var(--orange);text-align:center">04 · SEO · the process</div>
+    <h2 style="margin-top:8px;text-align:center">Sitemap → read → the items</h2>
+    <p class="pf-sub">Claude reads the <b>sitemaps + Wayback</b>, dates them honestly, classifies each page, then <b>joins to real rankings</b> — publishing vs actually winning.</p>
+    <div class="pf-flow">
+      <div class="pf-node">
+        <div class="pf-step">1 · the site</div>
+        <div class="pf-card">
+          <div class="pf-bar"><span class="d" style="background:#ff5f57"></span><span class="d" style="background:#febc2e"></span><span class="d" style="background:#28c840"></span><span class="pf-url">clickup.com/sitemap.xml</span></div>
+          <div class="pf-body">
+            <div>&lt;loc&gt;/blog/claude-alternatives</div>
+            <div>&lt;loc&gt;/blog/claude-vs-chatgpt</div>
+            <div class="xl">&lt;lastmod&gt; 2026-…</div>
+            <div class="xl">27 sub-sitemaps · 160K urls</div>
+          </div>
+        </div>
+        <div class="pf-label">Sitemaps + Wayback</div>
+      </div>
+      <div class="pf-conn"></div>
+      <div class="pf-node">
+        <div class="pf-step">2 · read</div>
+        <div class="pf-claude"><img src="_shared/logos/claude-code.svg" alt="Claude"></div>
+        <div class="pf-label">Claude + Porter read it</div>
+      </div>
+      <div class="pf-conn d2"></div>
+      <div class="pf-node">
+        <div class="pf-step">3 · the items</div>
+        <div class="pf-out">
+          <div class="o"><span class="n">01</span> Footprint</div>
+          <div class="o"><span class="n">02</span> Datable vs rebuild</div>
+          <div class="o"><span class="n">03</span> Classification</div>
+          <div class="o"><span class="n">04</span> The content bet</div>
+          <div class="o"><span class="n">05</span> Publish vs rank</div>
+          <div class="o"><span class="n">06</span> The read</div>
+        </div>
+        <div class="pf-label">The same items, every site</div>
+      </div>
+    </div>
+    <div class="foot"><span><span class="spark">✻</span> How we do competitor research with Claude</span><span>x</span></div>
+  </section>
+
+  <!-- 3 · THE ANALYSIS · applied to ClickUp -->
+  <section class="slide pad" data-layout="ClickUp, through the framework" style="justify-content:center">
+    <style>
+      .fw-sub{font-size:16px;color:var(--text-soft);text-align:center;max-width:82ch;margin:11px auto 0;line-height:1.5}
+      .fw-sub b{color:var(--text)}
+      .fw-legend{display:flex;gap:20px;justify-content:center;margin:12px auto 0;font-size:12px;color:var(--text-dim)}
+      .fw-legend span{display:inline-flex;align-items:center;gap:7px}
+      .fw-legend i{width:11px;height:11px;border-radius:3px;display:inline-block}
+      .fw-table{width:100%;max-width:1190px;margin:6px auto 0}
+      .fw-row{display:flex;gap:18px;align-items:center;padding:6px 10px;border-top:1px solid rgba(255,255,255,.07)}
+      .fw-row:last-child{border-bottom:1px solid rgba(255,255,255,.07)}
+      .fw-row.star{background:linear-gradient(90deg,rgba(217,119,87,.07),transparent);border-left:2.5px solid var(--orange)}
+      .fw-left{width:214px;flex:none;display:flex;align-items:center;gap:11px}
+      .fw-ic{width:33px;height:33px;flex:none;border-radius:10px;background:rgba(217,119,87,.13);display:grid;place-items:center}
+      .fw-ic svg{width:18px;height:18px;stroke:var(--orange);fill:none;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+      .fw-lt .n{font-family:var(--mono);font-size:10.5px;color:var(--orange);font-weight:700}
+      .fw-lt h3{font-size:14.5px;color:var(--text);font-weight:750;margin:1px 0 1px}
+      .fw-lt p{font-size:11.5px;color:var(--text-dim);margin:0;line-height:1.3}
+      .fw-chips{display:flex;flex-wrap:wrap;gap:8px}
+      .fw-chip{font-family:var(--mono);font-size:12px;color:var(--text-soft);background:var(--bg-elev);border:1px solid rgba(255,255,255,.09);border-radius:7px;padding:5px 10px;white-space:nowrap}
+      .fw-chip b{color:var(--text);font-weight:700}
+      .fw-tag{font-size:9.5px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:var(--text-dim);border:1px solid rgba(255,255,255,.14);border-radius:20px;padding:2px 8px;margin-left:8px}
+      .fw-tag.star{color:var(--orange);border-color:rgba(217,119,87,.45)}
+      .vr-bad{color:#ff6b6b;font-weight:800}
+      .fw-punch{text-align:center;color:var(--text);font-size:15.5px;margin-top:10px;font-weight:600}
+      .fw-punch b{color:var(--orange)}
+    </style>
+    <div class="kicker" style="color:var(--orange);text-align:center">04 · SEO · the analysis</div>
+    <h2 style="margin-top:6px;text-align:center">ClickUp, through the framework</h2>
+    <p class="fw-sub">Sitemaps profiled live today; rankings from a live SERP check (US). <b>Publishing ≠ ranking</b> — the join is where the truth is.</p>
+    <div class="fw-legend"><span><i style="background:rgba(217,119,87,.6)"></i>measured live</span><span><i style="background:rgba(255,255,255,.18)"></i>the join · publish vs rank</span></div>
+
+    <div class="fw-table">
+
+      <div class="fw-row">
+        <div class="fw-left">
+          <div class="fw-ic"><svg viewBox="0 0 24 24"><path d="M3 7l9-4 9 4-9 4-9-4z"/><path d="M3 12l9 4 9-4"/><path d="M3 17l9 4 9-4"/></svg></div>
+          <div class="fw-lt"><div class="n">01</div><h3>Footprint</h3><p>the whole map</p></div>
+        </div>
+        <div class="fw-chips">
+          <span class="fw-chip"><b>160,420</b> URLs</span><span class="fw-chip">27 sub-sitemaps</span><span class="fw-chip">~15 locales</span>
+        </div>
+      </div>
+
+      <div class="fw-row">
+        <div class="fw-left">
+          <div class="fw-ic"><svg viewBox="0 0 24 24"><rect x="4" y="5" width="16" height="16" rx="2"/><path d="M4 9.5h16"/><path d="M8 3v4"/><path d="M16 3v4"/><path d="M9 15l2 2 4-4"/></svg></div>
+          <div class="fw-lt"><div class="n">02</div><h3>The date trap</h3><p>the sitemap lies</p></div>
+        </div>
+        <div class="fw-chips">
+          <span class="fw-chip"><b>24 / 27</b> sin lastmod</span><span class="fw-chip">sitemap-next 1,526 = <b>1 deploy</b>, not edits</span><span class="fw-chip">only the blog is datable</span>
+        </div>
+      </div>
+
+      <div class="fw-row">
+        <div class="fw-left">
+          <div class="fw-ic"><svg viewBox="0 0 24 24"><rect x="4" y="4" width="7" height="7" rx="1"/><rect x="13" y="4" width="7" height="7" rx="1"/><rect x="4" y="13" width="7" height="7" rx="1"/><rect x="13" y="13" width="7" height="7" rx="1"/></svg></div>
+          <div class="fw-lt"><div class="n">03</div><h3>What they build</h3><p>page types</p></div>
+        </div>
+        <div class="fw-chips">
+          <span class="fw-chip">programmatic blog + templates</span><span class="fw-chip">TOFU/MOFU at scale</span><span class="fw-chip">how-to · vs-X · alternatives</span>
+        </div>
+      </div>
+
+      <div class="fw-row">
+        <div class="fw-left">
+          <div class="fw-ic"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 8v8"/><path d="M8 12h8"/></svg></div>
+          <div class="fw-lt"><div class="n">04</div><h3>The content bet</h3><p>where they doubled down</p></div>
+        </div>
+        <div class="fw-chips">
+          <span class="fw-chip"><b>41</b> en-US "claude" posts</span><span class="fw-chip"><b>796</b> across locales</span><span class="fw-chip">claude-vs-* · how-to-use-claude · alternatives</span>
+        </div>
+      </div>
+
+      <div class="fw-row star">
+        <div class="fw-left">
+          <div class="fw-ic"><svg viewBox="0 0 24 24"><path d="M3 20h18"/><path d="M6 20v-5"/><path d="M11 20v-9"/><path d="M16 20v-3"/><path d="M21 20V8"/></svg></div>
+          <div class="fw-lt"><div class="n">05</div><h3>Publish ≠ rank <span class="fw-tag star" style="white-space:nowrap">the join</span></h3><p>do they actually win?</p></div>
+        </div>
+        <div class="fw-chips">
+          <span class="fw-chip">"claude alternatives" → <span class="vr-bad">#57</span></span><span class="fw-chip">"claude ai review" → <span class="vr-bad">#44</span></span><span class="fw-chip" style="border-color:rgba(255,107,107,.5)">"vs chatgpt" · "how to use" → <span class="vr-bad">not in top 100</span></span>
+        </div>
+      </div>
+
+      <div class="fw-row">
+        <div class="fw-left">
+          <div class="fw-ic"><svg viewBox="0 0 24 24"><path d="M2 12s4-7 10-7 10 7 10 7-4 7-10 7-10-7-10-7z"/><circle cx="12" cy="12" r="3"/></svg></div>
+          <div class="fw-lt"><div class="n">06</div><h3>The read</h3><p>what it means</p></div>
+        </div>
+        <div class="fw-chips">
+          <span class="fw-chip">motion = <b>volume</b>, not ranking</span><span class="fw-chip">a content firehose that mostly misses page 1</span>
+        </div>
+      </div>
+
+    </div>
+    <p class="fw-punch">A firehose — <b>41 "claude" posts</b> — but most never crack page 1. The sitemap looks busy; <b>the rankings say otherwise</b>.</p>
+    <div class="foot"><span><span class="spark">✻</span> How we do competitor research with Claude</span><span>x</span></div>
+  </section>
+
+  <!-- SECTION COVER -->
+  <section class="slide pad divider" data-layout="Social Media">
+    <div class="kicker" style="color:var(--orange)">06 · Tactics</div>
+    <h2>Social Media</h2>
+    <p class="lead" style="margin-top:14px;max-width:62ch">What a competitor posts — and how their audience reacts. Read live from <b style="color:var(--text)">public Instagram data</b> via Porter, using <b style="color:var(--text)">adidas</b> as our worked example.</p>
+  </section>
+
+  <!-- 1 · THE PROFILE (rebuilt from real public data) -->
+  <section class="slide pad" data-layout="The profile we analyze" style="justify-content:center">
+    <style>
+      .ig-sub{font-size:17px;color:var(--text-soft);text-align:center;max-width:70ch;margin:12px auto 0;line-height:1.5}
+      .ig-sub b{color:var(--text)}
+      .ig-card{width:840px;max-width:100%;margin:34px auto 0;background:var(--bg-elev);border:1px solid rgba(255,255,255,.09);border-radius:18px;padding:32px 40px;display:flex;gap:40px;align-items:center;box-shadow:0 26px 60px -30px rgba(0,0,0,.8)}
+      .ig-ring{width:132px;height:132px;flex:none;border-radius:50%;padding:4px;background:conic-gradient(from 220deg,#feda75,#fa7e1e,#d62976,#962fbf,#4f5bd5,#feda75)}
+      .ig-av{width:100%;height:100%;border-radius:50%;background:#1c1c1c;display:grid;place-items:center}
+      .ig-av svg{width:48px;height:48px;stroke:var(--text-dim);fill:none;stroke-width:1.6}
+      .ig-info{flex:1;min-width:0}
+      .ig-name{display:flex;align-items:center;gap:10px}
+      .ig-name h3{font-size:26px;color:var(--text);font-weight:750}
+      .ig-check{width:22px;height:22px;border-radius:50%;background:#3897f0;display:grid;place-items:center;color:#fff;font-size:12px;font-weight:900}
+      .ig-stats{display:flex;gap:34px;margin:16px 0 14px}
+      .ig-stat .v{font-size:22px;color:var(--text);font-weight:750}
+      .ig-stat .l{font-size:13px;color:var(--text-dim)}
+      .ig-bio{font-size:15px;color:var(--text-soft);line-height:1.5}
+      .ig-bio .tag{color:var(--orange);font-weight:650}
+      .ig-web{font-size:14px;color:var(--blue,#6aa8ff);margin-top:5px}
+      .ig-note{text-align:center;color:var(--text-dim);font-size:13px;margin-top:22px}
+    </style>
+    <div class="kicker" style="color:var(--orange);text-align:center">06 · Social · the account we analyze</div>
+    <h2 style="margin-top:8px;text-align:center">Start with the public profile</h2>
+    <p class="ig-sub">No login, no scraping tricks — just a <b>public business account</b>, read through Porter's Instagram public data.</p>
+    <div class="ig-card">
+      <div class="ig-ring"><div class="ig-av"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1.2" fill="currentColor" stroke="none"/></svg></div></div>
+      <div class="ig-info">
+        <div class="ig-name"><h3>@adidas</h3><span class="ig-check">✓</span></div>
+        <div class="ig-stats">
+          <div class="ig-stat"><div class="v">1,637</div><div class="l">posts</div></div>
+          <div class="ig-stat"><div class="v">29.6M</div><div class="l">followers</div></div>
+          <div class="ig-stat"><div class="v">1,060</div><div class="l">following</div></div>
+        </div>
+        <div class="ig-bio">Where there's a pitch, there's a legend. <span class="tag">#YouGotThis</span></div>
+        <div class="ig-web">linktr.ee/adidas</div>
+      </div>
+    </div>
+    <p class="ig-note">Rebuilt from the real public figures Porter returns — captured Aug 2026.</p>
+    <div class="foot"><span><span class="spark">✻</span> How we do competitor research with Claude</span><span>x</span></div>
+  </section>
+
+  <!-- 2 · THE PROCESS · handle -> read -> items -->
+  <section class="slide pad" data-layout="Handle → read → the items" style="justify-content:center">
+    <style>
+      .pf-sub{font-size:17px;color:var(--text-soft);text-align:center;max-width:72ch;margin:12px auto 0;line-height:1.5}
+      .pf-sub b{color:var(--text)}
+      .pf-flow{display:flex;align-items:center;justify-content:center;margin-top:46px}
+      .pf-node{display:flex;flex-direction:column;align-items:center;gap:14px;width:236px}
+      .pf-card{width:216px;height:154px;border-radius:15px;background:var(--bg-elev);border:1px solid rgba(255,255,255,.08);box-shadow:0 22px 46px -24px rgba(0,0,0,.75);overflow:hidden;display:flex;flex-direction:column}
+      .pf-bar{height:31px;background:var(--code-bg);display:flex;align-items:center;gap:6px;padding:0 11px}
+      .pf-bar .d{width:8px;height:8px;border-radius:50%}
+      .pf-url{margin-left:6px;font-family:var(--mono);font-size:10.5px;color:var(--text-soft);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+      .pf-body{flex:1;padding:12px 14px;display:flex;flex-direction:column;gap:8px;justify-content:center}
+      .pf-r{display:flex;justify-content:space-between;align-items:center}
+      .pf-r .l{height:7px;border-radius:4px;background:rgba(255,255,255,.10)}
+      .pf-r .p{font-family:var(--mono);font-size:10.5px;color:var(--text-dim)}
+      .pf-claude{width:150px;height:150px;border-radius:24px;background:#fff;display:grid;place-items:center;box-shadow:0 22px 52px -20px rgba(217,119,87,.5);animation:pfpulse 2.6s ease-in-out infinite}
+      .pf-claude img{width:80px;height:80px}
+      @keyframes pfpulse{0%,100%{box-shadow:0 22px 52px -24px rgba(217,119,87,.32)}50%{box-shadow:0 22px 64px -14px rgba(217,119,87,.7)}}
+      .pf-out{width:216px;height:154px;border-radius:15px;background:linear-gradient(158deg,#2b211c,#232323);border:1px solid rgba(217,119,87,.24);padding:13px 16px;display:flex;flex-direction:column;gap:6px;justify-content:center}
+      .pf-out .o{display:flex;align-items:center;gap:9px;font-size:12px;color:var(--text-soft);font-weight:600}
+      .pf-out .o .n{font-family:var(--mono);font-size:9.5px;color:var(--orange);font-weight:700;width:14px}
+      .pf-label{font-size:13.5px;color:var(--text-dim);font-weight:600}
+      .pf-conn{width:92px;height:2px;background:rgba(255,255,255,.13);position:relative;margin:0 -4px;margin-bottom:32px}
+      .pf-conn::before{content:"";position:absolute;top:-3.5px;left:0;width:9px;height:9px;border-radius:50%;background:var(--orange);box-shadow:0 0 12px 2px rgba(217,119,87,.6);animation:pfrun 2.2s linear infinite}
+      .pf-conn.d2::before{animation-delay:1.1s}
+      @keyframes pfrun{0%{left:0;opacity:0}12%{opacity:1}88%{opacity:1}100%{left:84px;opacity:0}}
+      .pf-step{font-family:var(--mono);font-size:12px;color:var(--orange);font-weight:700;margin-bottom:2px}
+    </style>
+    <div class="kicker" style="color:var(--orange);text-align:center">06 · Social · the process</div>
+    <h2 style="margin-top:8px;text-align:center">Handle → read → the items</h2>
+    <p class="pf-sub">Give Claude a <b>handle</b>. Porter pulls the <b>public data</b> (Business Discovery), and the same items get filled — then it ships as a hosted dashboard.</p>
+    <div class="pf-flow">
+      <div class="pf-node">
+        <div class="pf-step">1 · the handle</div>
+        <div class="pf-card">
+          <div class="pf-bar"><span class="d" style="background:#ff5f57"></span><span class="d" style="background:#febc2e"></span><span class="d" style="background:#28c840"></span><span class="pf-url">instagram.com/adidas</span></div>
+          <div class="pf-body">
+            <div class="pf-r"><span class="l" style="width:50%"></span><span class="p">29.6M</span></div>
+            <div class="pf-r"><span class="l" style="width:40%"></span><span class="p">1,637</span></div>
+            <div class="pf-r"><span class="l" style="width:58%"></span><span class="p">carousel</span></div>
+            <div class="pf-r"><span class="l" style="width:44%"></span><span class="p">reel</span></div>
+          </div>
+        </div>
+        <div class="pf-label">The public account</div>
+      </div>
+      <div class="pf-conn"></div>
+      <div class="pf-node">
+        <div class="pf-step">2 · read</div>
+        <div class="pf-claude"><img src="_shared/logos/claude-code.svg" alt="Claude"></div>
+        <div class="pf-label">Claude + Porter read it</div>
+      </div>
+      <div class="pf-conn d2"></div>
+      <div class="pf-node">
+        <div class="pf-step">3 · the items</div>
+        <div class="pf-out">
+          <div class="o"><span class="n">01</span> Profile</div>
+          <div class="o"><span class="n">02</span> Format mix</div>
+          <div class="o"><span class="n">03</span> Engagement</div>
+          <div class="o"><span class="n">04</span> Publishing cadence</div>
+          <div class="o"><span class="n">05</span> Creators &amp; collabs</div>
+          <div class="o"><span class="n">06</span> What's visible</div>
+        </div>
+        <div class="pf-label">→ a hosted Porter dashboard</div>
+      </div>
+    </div>
+    <div class="foot"><span><span class="spark">✻</span> How we do competitor research with Claude</span><span>x</span></div>
+  </section>
+
+  <!-- 3 · THE ANALYSIS · the teardown, applied to adidas -->
+  <section class="slide pad" data-layout="adidas, through the framework" style="justify-content:center">
+    <style>
+      .fw-sub{font-size:16px;color:var(--text-soft);text-align:center;max-width:82ch;margin:11px auto 0;line-height:1.5}
+      .fw-sub b{color:var(--text)}
+      .fw-legend{display:flex;gap:20px;justify-content:center;margin:12px auto 0;font-size:12px;color:var(--text-dim)}
+      .fw-legend span{display:inline-flex;align-items:center;gap:7px}
+      .fw-legend i{width:11px;height:11px;border-radius:3px;display:inline-block}
+      .fw-table{width:100%;max-width:1190px;margin:6px auto 0}
+      .fw-row{display:flex;gap:18px;align-items:center;padding:6px 10px;border-top:1px solid rgba(255,255,255,.07)}
+      .fw-row:last-child{border-bottom:1px solid rgba(255,255,255,.07)}
+      .fw-row.star{background:linear-gradient(90deg,rgba(217,119,87,.07),transparent);border-left:2.5px solid var(--orange)}
+      .fw-left{width:214px;flex:none;display:flex;align-items:center;gap:11px}
+      .fw-ic{width:33px;height:33px;flex:none;border-radius:10px;background:rgba(217,119,87,.13);display:grid;place-items:center}
+      .fw-ic svg{width:18px;height:18px;stroke:var(--orange);fill:none;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+      .fw-lt .n{font-family:var(--mono);font-size:10.5px;color:var(--orange);font-weight:700}
+      .fw-lt h3{font-size:14.5px;color:var(--text);font-weight:750;margin:1px 0 1px}
+      .fw-lt p{font-size:11.5px;color:var(--text-dim);margin:0;line-height:1.3}
+      .fw-chips{display:flex;flex-wrap:wrap;gap:8px}
+      .fw-chip{font-family:var(--mono);font-size:12px;color:var(--text-soft);background:var(--bg-elev);border:1px solid rgba(255,255,255,.09);border-radius:7px;padding:5px 10px;white-space:nowrap}
+      .fw-chip b{color:var(--text);font-weight:700}
+      .fw-tag{font-size:9.5px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:var(--text-dim);border:1px solid rgba(255,255,255,.14);border-radius:20px;padding:2px 8px;margin-left:8px}
+      .fw-tag.star{color:var(--orange);border-color:rgba(217,119,87,.45)}
+      .vr-ok{color:#33d17a;font-weight:800}
+      .vr-bad{color:#ff6b6b;font-weight:800}
+      .fw-punch{text-align:center;color:var(--text);font-size:15.5px;margin-top:10px;font-weight:600}
+      .fw-punch b{color:var(--orange)}
+    </style>
+    <div class="kicker" style="color:var(--orange);text-align:center">06 · Social · the analysis</div>
+    <h2 style="margin-top:6px;text-align:center">adidas, through the framework</h2>
+    <p class="fw-sub">Every number measured off <b>public data</b> — 100 posts (50 carry likes), Sep 2025–Jul 2026. The full teardown ships as a hosted Porter dashboard.</p>
+    <div class="fw-legend"><span><i style="background:rgba(217,119,87,.6)"></i>measured from public data</span><span><i style="background:rgba(255,255,255,.18)"></i>the honest boundary</span></div>
+
+    <div class="fw-table">
+
+      <div class="fw-row">
+        <div class="fw-left">
+          <div class="fw-ic"><svg viewBox="0 0 24 24"><circle cx="12" cy="9" r="3.5"/><path d="M5 20c0-3.5 3-6 7-6s7 2.5 7 6"/></svg></div>
+          <div class="fw-lt"><div class="n">01</div><h3>Profile</h3><p>the base</p></div>
+        </div>
+        <div class="fw-chips">
+          <span class="fw-chip"><b>29.6M</b> followers</span><span class="fw-chip">1,637 posts</span><span class="fw-chip">follows 1,060</span><span class="fw-chip">bio · #YouGotThis</span>
+        </div>
+      </div>
+
+      <div class="fw-row">
+        <div class="fw-left">
+          <div class="fw-ic"><svg viewBox="0 0 24 24"><rect x="4" y="4" width="7" height="7" rx="1"/><rect x="13" y="4" width="7" height="7" rx="1"/><rect x="4" y="13" width="7" height="7" rx="1"/><rect x="13" y="13" width="7" height="7" rx="1"/></svg></div>
+          <div class="fw-lt"><div class="n">02</div><h3>Format mix</h3><p>of last 100</p></div>
+        </div>
+        <div class="fw-chips">
+          <span class="fw-chip">Carousel <b>68%</b></span><span class="fw-chip">Reel <b>25%</b></span><span class="fw-chip">Image <b>7%</b></span><span class="fw-chip">→ carousel-first</span>
+        </div>
+      </div>
+
+      <div class="fw-row">
+        <div class="fw-left">
+          <div class="fw-ic"><svg viewBox="0 0 24 24"><path d="M12 20s-7-4.5-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.5-7 10-7 10z"/></svg></div>
+          <div class="fw-lt"><div class="n">03</div><h3>Engagement</h3><p>likes + comments only</p></div>
+        </div>
+        <div class="fw-chips">
+          <span class="fw-chip">median <b>79.8K</b> likes/post</span><span class="fw-chip">mean 320K — 1 post hit <b>4.3M</b></span><span class="fw-chip">conversation 0.55%</span>
+        </div>
+      </div>
+
+      <div class="fw-row">
+        <div class="fw-left">
+          <div class="fw-ic"><svg viewBox="0 0 24 24"><rect x="4" y="5" width="16" height="16" rx="2"/><path d="M4 9.5h16"/><path d="M8 3v4"/><path d="M16 3v4"/></svg></div>
+          <div class="fw-lt"><div class="n">04</div><h3>Publishing</h3><p>cadence &amp; timing</p></div>
+        </div>
+        <div class="fw-chips">
+          <span class="fw-chip">~100 posts · Sep'25–Jul'26</span><span class="fw-chip">clock in UTC</span><span class="fw-chip">heatmap · weekday × hour</span>
+        </div>
+      </div>
+
+      <div class="fw-row">
+        <div class="fw-left">
+          <div class="fw-ic"><svg viewBox="0 0 24 24"><circle cx="9" cy="8" r="3.2"/><path d="M3.5 19c0-3 2.5-5 5.5-5s5.5 2 5.5 5"/><circle cx="17" cy="8.5" r="2.4"/><path d="M15.5 14.2c2.6.2 4.5 2.1 4.5 4.8"/></svg></div>
+          <div class="fw-lt"><div class="n">05</div><h3>Creators &amp; collabs</h3><p>who fuels the feed</p></div>
+        </div>
+        <div class="fw-chips">
+          <span class="fw-chip"><b>44%</b> of posts tag a creator</span><span class="fw-chip">top · tatemcrae 531K · jadepicon 508K</span><span class="fw-chip">#YouGotThis on 50%</span>
+        </div>
+      </div>
+
+      <div class="fw-row star">
+        <div class="fw-left">
+          <div class="fw-ic"><svg viewBox="0 0 24 24"><path d="M2 12s4-7 10-7 10 7 10 7-4 7-10 7-10-7-10-7z"/><circle cx="12" cy="12" r="3"/></svg></div>
+          <div class="fw-lt"><div class="n">06</div><h3>What's visible <span class="fw-tag star" style="white-space:nowrap">boundary</span></h3><p>public ≠ owned</p></div>
+        </div>
+        <div class="fw-chips">
+          <span class="fw-chip"><span class="vr-ok">✓</span> followers · likes · comments · formats · cadence</span><span class="fw-chip" style="border-color:rgba(255,107,107,.4)"><span class="vr-bad">✗</span> reach · saves · impressions · demographics</span>
+        </div>
+      </div>
+
+    </div>
+    <p class="fw-punch">Carousel-first and creator-fueled — <b>athletes + musicians</b>, not product shots. But public data stops at likes: <b>no reach, no audience</b>.</p>
+    <div class="foot"><span><span class="spark">✻</span> How we do competitor research with Claude</span><span>x</span></div>
+  </section>
+</div>
+<div class="hud" id="hud">1 / 1 &nbsp;·&nbsp; ← →</div>
+<script src="_shared/slides.js"></script>
+</body>
+</html>
