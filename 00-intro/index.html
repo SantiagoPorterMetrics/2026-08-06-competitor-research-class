@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>How we do competitor research with Claude · Porter Metrics</title>
+<link rel="stylesheet" href="../_shared/styles.css">
+</head>
+<body>
+<div class="label" id="layoutLabel"></div>
+<div class="stage">
+
+  <!-- COVER -->
+  <section class="slide active pad divider" data-layout="Competitor Research">
+    <h2>Competitor Research</h2>
+  </section>
+
+  <!-- The 4 kinds of research -->
+  <section class="slide pad" data-layout="Four kinds of research" style="justify-content:center">
+    <style>
+      .rt-sub{font-size:17px;color:var(--text-soft);text-align:center;max-width:68ch;margin:12px auto 0;line-height:1.5}
+      .rt-sub b{color:var(--text)}
+      .rt-grid{display:flex;gap:22px;justify-content:center;margin:46px auto 0;width:100%;max-width:1120px}
+      .rt-card{flex:1;background:var(--bg-elev);border:1px solid rgba(255,255,255,.08);border-radius:16px;padding:26px 22px 22px;display:flex;flex-direction:column;gap:13px;box-shadow:0 18px 40px -24px rgba(0,0,0,.7);position:relative}
+      .rt-card.dim{opacity:.5}
+      .rt-card.on{border-color:rgba(217,119,87,.5);background:linear-gradient(158deg,#2b211c,#232323);box-shadow:0 26px 58px -18px rgba(217,119,87,.42)}
+      .rt-ic{width:52px;height:52px;border-radius:13px;background:rgba(255,255,255,.06);display:grid;place-items:center}
+      .rt-card.on .rt-ic{background:rgba(217,119,87,.16)}
+      .rt-ic svg{width:27px;height:27px;stroke:var(--text-dim);fill:none;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+      .rt-card.on .rt-ic svg{stroke:var(--orange)}
+      .rt-h{font-size:17px;font-weight:750;color:var(--text)}
+      .rt-card.dim .rt-h{color:var(--text-soft)}
+      .rt-p{font-size:13.5px;color:var(--text-dim);line-height:1.5;margin:0}
+      .rt-badge{position:absolute;top:-12px;left:50%;transform:translateX(-50%);background:var(--orange);color:#1a1a1a;font-size:10.5px;font-weight:800;letter-spacing:.07em;text-transform:uppercase;padding:5px 13px;border-radius:20px;white-space:nowrap;box-shadow:0 8px 20px -6px rgba(217,119,87,.6)}
+      .rt-foot{text-align:center;color:var(--text-soft);font-size:15px;margin-top:34px}
+      .rt-foot b{color:var(--orange);font-weight:750}
+    </style>
+    <div class="kicker" style="color:var(--orange);text-align:center">Intro · the landscape</div>
+    <h2 style="margin-top:8px;text-align:center">Four kinds of research</h2>
+    <p class="rt-sub">Before you sell anything, you research. There are <b>four angles</b> — and they answer four different questions.</p>
+    <div class="rt-grid">
+
+      <!-- Market -->
+      <div class="rt-card dim">
+        <div class="rt-ic"><svg viewBox="0 0 24 24"><path d="M3 20h18"/><path d="M6 20v-7"/><path d="M11 20V6"/><path d="M16 20v-10"/><path d="M21 20V4"/></svg></div>
+        <div class="rt-h">Market research</div>
+        <p class="rt-p">The whole category — its size, its trends, where demand is heading.</p>
+      </div>
+
+      <!-- Audience -->
+      <div class="rt-card dim">
+        <div class="rt-ic"><svg viewBox="0 0 24 24"><circle cx="9" cy="8" r="3.2"/><path d="M3.5 19c0-3 2.5-5 5.5-5s5.5 2 5.5 5"/><circle cx="17" cy="8.5" r="2.4"/><path d="M15.5 14.2c2.6.2 4.5 2.1 4.5 4.8"/></svg></div>
+        <div class="rt-h">Audience research</div>
+        <p class="rt-p">Who you sell to — their pains, their language, what they actually want.</p>
+      </div>
+
+      <!-- Content -->
+      <div class="rt-card dim">
+        <div class="rt-ic"><svg viewBox="0 0 24 24"><path d="M6 3h9l3 3v15H6z"/><path d="M14 3v4h4"/><path d="M9 12h6"/><path d="M9 16h6"/></svg></div>
+        <div class="rt-h">Content research</div>
+        <p class="rt-p">What to say — the topics, angles and formats that actually land.</p>
+      </div>
+
+      <!-- Competitor (focus) -->
+      <div class="rt-card on">
+        <div class="rt-badge">This class</div>
+        <div class="rt-ic"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><circle cx="12" cy="12" r="3.5"/><path d="M12 1.5v4"/><path d="M12 18.5v4"/><path d="M1.5 12h4"/><path d="M18.5 12h4"/></svg></div>
+        <div class="rt-h">Competitor research</div>
+        <p class="rt-p">Who you're up against — their ads, pages, keywords and every move they make.</p>
+      </div>
+
+    </div>
+    <p class="rt-foot">This class is about the fourth: <b>competitor research</b>.</p>
+    <div class="foot"><span><span class="spark">✻</span> How we do competitor research with Claude</span><span>x</span></div>
+  </section>
+
+  <!-- What can we learn · the index of use cases -->
+  <section class="slide pad" data-layout="What can we learn?" style="justify-content:center">
+    <style>
+      .idx-sub{font-size:16.5px;color:var(--text-soft);text-align:center;max-width:74ch;margin:12px auto 0;line-height:1.5}
+      .idx-sub b{color:var(--text)}
+      .idx-group{width:100%;max-width:1130px;margin:0 auto}
+      .idx-glabel{display:flex;align-items:center;gap:13px;margin:0 4px 13px}
+      .idx-glabel .t{font-size:12px;font-weight:800;letter-spacing:.11em;text-transform:uppercase;color:var(--orange);white-space:nowrap}
+      .idx-glabel .d{font-size:13px;color:var(--text-dim);white-space:nowrap}
+      .idx-glabel .rule{flex:1;height:1px;background:rgba(255,255,255,.09)}
+      .idx-row{display:flex;gap:16px}
+      .idx-card{flex:1;background:var(--bg-elev);border:1px solid rgba(255,255,255,.08);border-radius:13px;padding:15px 16px;display:flex;gap:13px;align-items:flex-start;box-shadow:0 14px 32px -24px rgba(0,0,0,.7)}
+      .idx-ic{width:40px;height:40px;flex:none;border-radius:11px;background:rgba(217,119,87,.13);display:grid;place-items:center}
+      .idx-ic svg{width:21px;height:21px;stroke:var(--orange);fill:none;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+      .idx-tx{min-width:0}
+      .idx-tx .n{font-family:var(--mono);font-size:11px;color:var(--orange);font-weight:700}
+      .idx-tx h3{font-size:15.5px;color:var(--text);font-weight:750;margin:1px 0 3px}
+      .idx-tx p{font-size:12.5px;color:var(--text-dim);line-height:1.45;margin:0}
+      .idx-gap{height:22px}
+    </style>
+    <div class="kicker" style="color:var(--orange);text-align:center">Intro · what's knowable</div>
+    <h2 style="margin-top:8px;text-align:center">What can we learn about a competitor?</h2>
+    <p class="idx-sub">Two tiers: the <b>strategic levers</b> behind their marketing — and the <b>tactics</b> where those levers show up. We'll take them <b>one by one</b>.</p>
+
+    <div class="idx-group" style="margin-top:36px">
+      <div class="idx-glabel"><span class="t">Strategic levers</span><span class="d">the decisions behind it all</span><span class="rule"></span></div>
+      <div class="idx-row">
+        <div class="idx-card">
+          <div class="idx-ic"><svg viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="1.5"/><path d="M12 4v16"/><path d="M4 12h16"/><circle cx="16.2" cy="7.8" r="1.7"/></svg></div>
+          <div class="idx-tx"><div class="n">01</div><h3>Positioning</h3><p>The space they claim — who they say they're for.</p></div>
+        </div>
+        <div class="idx-card">
+          <div class="idx-ic"><svg viewBox="0 0 24 24"><path d="M4 5h16v11H9l-4 3v-3H4z"/><path d="M8 9h8"/><path d="M8 12.5h5"/></svg></div>
+          <div class="idx-tx"><div class="n">02</div><h3>Messaging</h3><p>The words, promises and angles they lead with.</p></div>
+        </div>
+        <div class="idx-card">
+          <div class="idx-ic"><svg viewBox="0 0 24 24"><path d="M20 12.6 12.6 20a1.4 1.4 0 0 1-2 0l-6.6-6.6a1.4 1.4 0 0 1-.4-1V4.6A1.6 1.6 0 0 1 5.2 3h4.8a1.4 1.4 0 0 1 1 .4L20 10.6a1.4 1.4 0 0 1 0 2z"/><circle cx="7.6" cy="7.6" r="1.3"/></svg></div>
+          <div class="idx-tx"><div class="n">03</div><h3>Pricing</h3><p>Their plans, tiers and how they package value.</p></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="idx-gap"></div>
+
+    <div class="idx-group">
+      <div class="idx-glabel"><span class="t">Tactics</span><span class="d">where those decisions show up</span><span class="rule"></span></div>
+      <div class="idx-row">
+        <div class="idx-card">
+          <div class="idx-ic"><svg viewBox="0 0 24 24"><circle cx="10.5" cy="10.5" r="6"/><path d="M15 15l5 5"/></svg></div>
+          <div class="idx-tx"><div class="n">04</div><h3>SEO</h3><p>The keywords and pages they rank for on Google.</p></div>
+        </div>
+        <div class="idx-card">
+          <div class="idx-ic"><svg viewBox="0 0 24 24"><path d="M3 10v4h3l9 5V5L6 10H3z"/><path d="M18 9a4 4 0 0 1 0 6"/></svg></div>
+          <div class="idx-tx"><div class="n">05</div><h3>Ads</h3><p>The paid creatives they're running right now.</p></div>
+        </div>
+        <div class="idx-card">
+          <div class="idx-ic"><svg viewBox="0 0 24 24"><circle cx="6" cy="12" r="2.4"/><circle cx="17" cy="6" r="2.4"/><circle cx="17" cy="18" r="2.4"/><path d="M8.2 11 14.8 7.2"/><path d="M8.2 13 14.8 16.8"/></svg></div>
+          <div class="idx-tx"><div class="n">06</div><h3>Social Media</h3><p>What they post — and how their audience reacts.</p></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="foot"><span><span class="spark">✻</span> How we do competitor research with Claude</span><span>x</span></div>
+  </section>
+
+</div>
+<div class="hud" id="hud">1 / 3 &nbsp;·&nbsp; ← →</div>
+<script src="../_shared/slides.js"></script>
+</body>
+</html>
